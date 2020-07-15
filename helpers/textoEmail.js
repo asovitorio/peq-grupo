@@ -1,6 +1,6 @@
 
 const textoEmails = {
-    alterarSenha : (token) =>{
+    alterarSenha : (token,url) =>{
         const page = `
         <!doctype html>
         <html lang="en">
@@ -44,7 +44,7 @@ const textoEmails = {
                       <h5 class="card-title">Parabéns agora você é um usuáios do sistema!</h5>
                       <p class="card-text">Clicando no botão você será direcionado para uma seção onde irá configurarar sua senha de acesso, lembrando que você é responsável pela sua validação portanto escolha uma senha segura com no <b> minimo 6 digitos</b> de sua escolha e não tranfira para niguém, isso nos dará mais garantias de um sistema seguro</p><p><h3>Muito obrigado!</h3></p>
                     </div>
-                    <div class="card-footer bg-transparent border-success"><a href="http://localhost:3000/alterar-senha/${token}" class="btn btn-success" >Click Aqui</a></div>
+                    <div class="card-footer bg-transparent border-success"><a href="${url}/${token}" class="btn btn-success" >Click Aqui</a></div>
                   </div>
               </div>
             

@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const Email = require('../../config/email');
 require('dotenv').config()
 const twtSecret = process.env.JWT_PASS 
+const url = process.env.URL_SENHA 
 const textoEmails = require('../../helpers/textoEmail');
 const { senha } = require('../pagesControllers');
 const usuarioApiController = {
@@ -107,7 +108,7 @@ const usuarioApiController = {
             from:`${process.env.EMAIL_USER}`,
             to:`${result.usuarioCadastro[0].email}`,
             subject:'Sistema Pequeno Grupo',
-            html:textoEmails.alterarSenha(token)
+            html:textoEmails.alterarSenha(token,url)
         }
        
          Email.sendMail(enviarEmail,(erro)=>{
