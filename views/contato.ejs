@@ -1,0 +1,59 @@
+<%-include('./partials/head.ejs')%>
+<%-include('./partials/nav.ejs')%>
+
+<main class="teste">
+  <div class="foto-corpo-contato"><img src="" alt="" width="70%"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="">
+        <div class="card-body" id="">
+          <img src="/images/contato2.jpg" id="" alt="" width="100%">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="">
+        <div class="card-body" id="texto1">
+          <h2>Fale Conosco</h2>
+          <form action="/contato" method="post">
+            <% if(message != undefined){%>
+            <div class="alert alert-success " role="alert">
+             <i class='fas fa-pray' style='font-size:15px'> <%=message%> </i>
+            </div>
+          <%}else{}%>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="background-color:#75c2db; border: none; color: white;" id="basic-addon1"><i class='fas fa-user-circle' style='font-size:15px'></i></span>
+                            </div>
+                            <input type="text" name="nome" class="form-control" placeholder="Digite seu nome" aria-label="Username" aria-describedby="basic-addon1" required>
+                          </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="background-color:#75c2db; border: none; color: white;" id="basic-addon1"><i class='fas fa-at' style='font-size:15px'></i></span>
+                            </div>
+                            <input type="email" name="email" class="form-control" placeholder="Digite o Email" aria-label="Username" aria-describedby="basic-addon1" required>
+                          </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="background-color:#75c2db; border: none; color: white;" id="basic-addon1"><i class='fas fa-phone' style='font-size:15px'></i></span>
+                            </div>
+                            <input type="tel" name="telefone" class="form-control" placeholder="Digite o Telefone" aria-label="Username" aria-describedby="basic-addon1" required>
+                          </div>
+                        
+                          <div class="input-group">
+                           
+                            <textarea name="msg" class="form-control" aria-label="With textarea" required></textarea>
+                          </div>
+                          <br>
+                        <button type="submit" class="btn btn-primary" style="background-color:#75c2db; border: none;">Enviar <i class='far fa-paper-plane' style='font-size:15px'></i></button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+       </div>
+    <%-include('./partials/footer.ejs')%>
+</main>

@@ -1,0 +1,126 @@
+<%-include('./partials/head.ejs')%>
+<body class="body-sistema">
+    
+<main class="main-sistema">
+    <div class="row" id="login">
+        <div class="col-sm-5">
+            <div class="card" id="card-local-peq-login">
+                <div id="box-local-peq-login"><img src="/images/logo1.jpg" class="card-img" id="img-local-peq-login"
+                        alt="..."></div>
+                <div class="card-body">
+                    <h5 class="card-title">Nova Senha</h5>
+                    <form id="form" action="/alterar-senha" method="POST" class="needs-validation" novalidate >
+                        <input type="hidden" name="id" value="<%=usuario.id%>">
+                        <input type="hidden" name="status" value="<%=usuario.status%>">
+                        <input type="hidden" name="email" value="<%=usuario.nome%>">
+                        <input type="hidden" name="token" value="<%=token%>">
+                        <label id="alertaUsuario" for=""></label>
+                          <div class="input-group mb-3">
+                             <div class="input-group-prepend">
+                              <span class="input-group-text"  style="background-color:#75c2db; border: none; color: white;" id="basic-addon1"><i class='fas fa-user-circle' style='font-size:15px'></i></span>
+                            </div>
+                              <input type="text" disabled id="usuario" value="<%=usuario.nome%> " name="usuario" class="form-control" placeholder="Digite o usuario" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <label id="alertaSenha" for=""></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="background-color:#75c2db; border: none; color: white;" id="basic-addon1"><i class='fas fa-lock' style='font-size:15px'></i></span>
+                            </div>
+                            <input id="senha" name="senha" type="password" class="form-control" placeholder="Digite a senha" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                          <label id="alertaConfirma" for=""></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="background-color:#75c2db; border: none; color: white;" id="basic-addon1"><i class='fas fa-lock' style='font-size:15px'></i></span>
+                            </div>
+                            <input id="confirmaSenha" name="" type="password" class="form-control" placeholder="confirme a senha" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                         
+                        <button id="submit" type="submit" class="btn btn-primary" style="background-color:#75c2db; border: none;">Salvar <i class='fas fa-save' style='font-size:15px'></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<!-- Optional JavaScript -->
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+ </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+ </script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
+ <script>
+
+     let form = document.getElementById('form')
+     let usuario = document.getElementById('usuario')
+     let senha = document.getElementById('senha')
+     let confirmaSenha = document.getElementById('confirmaSenha')
+     let alertaUsuario = document.getElementById('alertaUsuario')
+     let alertaSenha = document.getElementById('alertaSenha')
+     let alertaConfirma = document.getElementById('alertaConfirma')
+     let submit = document.getElementById('submit')
+     alertaUsuario.style.display = 'none'
+      alertaSenha.style.display = 'none'
+      alertaConfirma.style.display = 'none'
+     submit.addEventListener('click',(e)=>{
+       
+        if(usuario.value === ""||usuario.value.length <3){
+            e.preventDefault();
+            usuario.style.border = '1px solid red'
+            alertaUsuario.style.display = "flex"
+            alertaUsuario.style.color = "red"
+            alertaUsuario.style.fontSize = "12px"
+            alertaUsuario.innerHTML = '*Digite um usuário com minimo 3 letras'
+            alertaSenha.style.display = 'none'
+      alertaConfirma.style.display = 'none'
+      senha.style.border = '1px solid #ced4da'
+            confirmaSenha.style.border = '1px solid #ced4da'
+
+        }else if(senha.value ===""||senha.value.length<6){   
+            e.preventDefault();
+            alertaUsuario.style.display = 'none'
+            alertaConfirma.style.display = 'none'
+            usuario.style.border = '1px solid #ced4da'
+            confirmaSenha.style.border = '1px solid #ced4da'
+            senha.style.border = '1px solid red'
+            alertaSenha.style.display = "flex"
+            alertaSenha.style.color = "red"
+            alertaSenha.style.fontSize = "12px"
+            alertaSenha.innerHTML = '*Digite uma Senha com no minimo 6 digitos'
+           
+        }else if(confirmaSenha.value != senha.value ){
+            e.preventDefault();
+            alertaUsuario.style.display = 'none'
+            alertaSenha.style.display = 'none'
+            usuario.style.border = '1px solid #ced4da'
+            senha.style.border = '1px solid red'
+            confirmaSenha.style.border = '1px solid red'
+            alertaSenha.style.display = "flex"
+            alertaSenha.style.color = "red"
+            alertaSenha.style.fontSize = "12px"
+            alertaSenha.innerHTML = '*As senhas não conferem'
+        }else{ 
+            alertaUsuario.style.display = 'none'
+      alertaSenha.style.display = 'none'
+      alertaConfirma.style.display = 'none'
+            usuario.style.border = '1px solid #ced4da'
+            senha.style.border = '1px solid #ced4da'
+            confirmaSenha.style.border = '1px solid #ced4da'
+          
+        }
+       
+     })
+     
+ </script>
+ </body>
+
+ </html>

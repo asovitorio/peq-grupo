@@ -1,0 +1,76 @@
+<%-include('./partials/head.ejs')%>
+
+<body class="body-sistema">
+
+    <main class="main-sistema">
+        <div class="row" id="login">
+            <div class="col-sm-5">
+                <div class="card" id="card-local-peq-login">
+                    <div id="box-local-peq-login"> <img src="/images/logo1.jpg" class="card-img"
+                            id="img-local-peq-login" alt="..."></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Login</h5>
+                        <% if( nav.teste == ""){ %> 
+                    <%}else{%><div class="alert alert-danger" role="alert">
+                        <%= nav.teste%> 
+                      </div><% } %> 
+                      <% if( nav.permisao == ""){ %> 
+                        <%}else{%><div class="alert alert-warning" role="alert">
+                            <%= nav.permisao%> 
+                          </div><% } %> 
+                      <% if( nav.nivel == ""){ %> 
+                        <%}else{%><div class="alert alert-info" role="alert">
+                            <%= nav.nivel%> 
+                          </div><% } %> 
+                        <form action="/login" method="POST">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                        style="background-color:#75c2db; border: none; color: white;"
+                                        id="basic-addon1"><i class='fas fa-user-circle'
+                                            style='font-size:15px'></i></span>
+                                </div>
+                                <input type="text" name="email" class="form-control" placeholder="Digite o usuario"
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                        style="background-color:#75c2db; border: none; color: white;"
+                                        id="basic-addon1"><i class='fas fa-lock' style='font-size:15px'></i></span>
+                                </div>
+                                <input type="password" name="senha" class="form-control" placeholder="Digite a senha"
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary"
+                                style="background-color:#75c2db; border: none;">Entrar <i class='fas fa-sign-in-alt'
+                                    style='font-size:15px'></i></button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
+    console.log(' <%= nav.teste%>')
+  </script>
+</body>
+
+</html>

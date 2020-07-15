@@ -1,0 +1,54 @@
+<%-include('../partials/head-system.ejs')%>
+<main class="contaner">
+    <label for="menu-sanduiche" id="label-sanduiche"> <i class="fas fa-list-alt"></i></label>
+    <div class="main">
+        <input type="checkbox" id="menu-sanduiche">
+        <aside class="" id="menu">
+
+            <nav id="painel-btn">
+                <div id="foto-profile"><img src="/images/pastor.jpg" alt="..." class="img-thumbnail">
+                </div>
+                <label class="perfil-usuario" for=""><b> Pr. Luciano</b><br>Status: ADM</label>
+                <hr>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#lista" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-user-cog'
+                            style='font-size:15px'> Cadastros</i></a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false"><i class='fas fa-users'
+                            style='font-size:15px'> P. Grupos</i></a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false"><i class='fas fa-pray'
+                            style='font-size:15px'> Relatorio</i></a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                        aria-controls="v-pills-settings" aria-selected="false"><i class='fas fa-bible'
+                            style='font-size:15px'> Lições</i></a>
+                </div>
+
+            </nav>
+        </aside>
+        <article class="" id="corpo">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="lista" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="corpo-titulo"><i class='fas fa-address-book' style='font-size:24px'>Pequeno</i></div>
+                    <br>
+                    <div class="row">
+                    </div>
+                </div>
+                
+                <!-- relat -->
+
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class="corpo-titulo"><i class='fas fa-pray' style='font-size:24px'> Relatorio</i></div>
+                    <br>
+                    <div class="row">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </article>
+    </div>
+</main>
+<%-include('../partials/footer-system.ejs')%>

@@ -1,0 +1,463 @@
+:root {
+    --color1: #75c2db;
+    --color2: #386e7f;
+}
+
+body * {
+    margin: 0;
+    padding: 0;
+      
+
+}
+body{
+    background: linear-gradient(45deg,orange,#56b4b8);
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    animation: colors 8s ease infinite;
+}
+@keyframes colors {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+i * {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#nav {
+    background-color: var(--color2);
+    width: 100vw;
+    height: 50px;
+    margin-bottom: 10px;
+    position: fixed;
+    box-shadow: 0px 0px 8px black;
+    z-index: 2;
+
+}
+
+#logo {
+    background-image: url('/images/logo3.png');
+    width: 150px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+header#nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 40px;
+    margin-left: 40px;
+
+}
+
+header#nav ul li {
+    display: inline-block;
+    color: white;
+}
+
+#foto-profile {
+    display: flex;
+    justify-content: center;
+}
+
+#foto-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 1px solid #75c2db;
+}
+
+label.perfil-usuario {
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #75c2db;
+
+}
+
+hr {
+    border: .5px solid #75c2db;
+    margin-top: 10px;
+
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  
+
+}
+
+#menu {
+
+    width: 30%;
+    height: 100vh;
+
+    text-align: center;
+    border: #75c2db solid 2px;
+    margin-top: 80px;
+    margin-left: 10px;
+    box-shadow: 0px 0px 4px black;
+    background-color: white;
+}
+
+#menu nav div {
+
+
+    margin: 0 auto;
+
+}
+
+#menu nav div a {
+    background-color: #75c2db;
+    margin-top: 10px;
+    color: white;
+    box-shadow: 0px 0px 4px black;
+
+}
+
+#menu nav div a:hover {
+    background-color: var(--color2);
+}
+
+#menu nav div a.active {
+    background-color: var(--color2);
+
+
+}
+
+.corpo-titulo {
+    margin-top: 10px;
+    color: #75c2db;
+    border-bottom: 2px solid #75c2db;
+    margin-right: 15px;
+
+}
+
+#corpo {
+    margin: 80px 10px;
+    width: 100%;
+    height: 100vh;
+    box-shadow: 0px 0px 8px black;
+    padding-left: 15px;
+    border: #75c2db solid 2px;
+    display: flex;
+background-color: white;
+
+}
+
+#menu-sanduiche {
+    display: none;
+    
+}
+
+#label-sanduiche {
+    display: none;
+}
+
+#painel-btn {
+    margin: 30px;
+}
+
+
+
+@media (max-width: 800px) {
+    #menu {
+
+        width: 50%;
+        height: auto;
+        transform: translateX(-100%);
+        display: none;
+        /* transition: 21s ease-in; */
+
+    }
+
+    #label-sanduiche {
+        display: block;
+        text-align: center;
+        position: absolute;
+        left: 15px;
+        top: 52px;
+        cursor: pointer;
+        z-index: 1;
+
+    }
+
+    #label-sanduiche i {
+        font-size: 25px;
+        font-size: 25px;
+        color: white;
+        font-weight: bolder;
+      
+    }
+    input#menu-sanduiche:checked~#menu {
+
+        transform: translateX(-0%);
+        display: block;
+        position: absolute;
+
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.8);
+        /* display: flex; */
+        width: 90%;
+
+
+    }
+
+    #corpo {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    #v-pills-tabContent {
+        width: inherit;
+
+    }
+
+}
+
+.row {
+    margin-right: 0;
+
+}
+
+#v-pills-tabContent {
+    width: inherit;
+    height: 100%;
+}
+
+div#v-pills-home .row {
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    box-shadow: 0px 3px 12px black;
+    border: none;
+    margin-top: 20px;
+
+}
+
+.card-header {
+    background-color: #75c2db;
+    border: none;
+    color: white;
+}
+
+.card-body a {
+    background-color: #75c2db;
+    border: none;
+    margin-top: 15px;
+
+}
+
+.card-body a:hover {
+    background-color: #386e7f;
+}
+
+#local-peq-grupo {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgba(0, 0, 0, 0.055);
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px black;
+}
+
+#card-local-peq-grupo {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    border: 3px solid #75c2db;
+    display: flex;
+    box-shadow: 0px 4px 8px black;
+
+}
+
+.btn-card {
+    background-color: #75c2db;
+    border: none;
+    margin: 15px;
+}
+
+.btn-card:hover {
+    background-color: var(--color2);
+    border: none;
+    margin: 15px;
+    transition: all .5s linear;
+}
+
+#box-local-peq-grupo {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 30px;
+}
+
+#img-local-peq-grupo {
+
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 3px solid #75c2db;
+    position: absolute;
+    top: -55px;
+}
+
+.btn-add-peq-grupo {
+    display: none;
+    transition: all 1s ease-in;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+
+}
+
+
+.btn-add-peq-grupo button {
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    box-shadow: 0px 0px 10px black;
+    background-color: #75c2db;
+    border: none;
+
+}
+
+.btn-add-peq-grupo button i {
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+
+.modal-content {
+    border: 3px solid #75c2db;
+    border-radius: 5px;
+}
+
+.modal-header {
+    color: white;
+    border-bottom: 2px solid #75c2db;
+    background-color: var(--color1);
+
+}
+
+.label-cadastros {
+    color: var(--color1);
+    font-weight: bold;
+}
+
+.form-control, .custom-select{
+    border: 1px solid var(--color1);
+}
+
+.input-group-text {
+    background-color: var(--color1);
+
+}
+
+.input-group-text i {
+    font-size: 20px;
+    color: white;
+}
+
+
+   
+#tabelas {
+    border: 3px solid var(--color1);
+}
+
+#tabelas thead {
+    background-color: var(--color1);
+    color: white;
+}
+
+#tabelas th {
+    text-align: center;
+}
+
+#tabelas tr * {
+    padding: 1px;
+
+}
+
+#tabelas tr th {
+  
+    text-align: center;
+}
+
+#tabelas tr td {
+    /* border: 3px solid var(--color1); */
+    text-align: left;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.img-table {
+    display: flex;
+    justify-content: center;
+}
+
+#avatar-tabela img {
+    background-color: var(--color1);
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+.group-button{
+    display: flex;
+    justify-content: flex-end;
+}
+.group-button button{
+margin-left: 10px;
+}
+@media(max-width:600px) {
+    .col-email {
+        display: none;
+    }
+    #tabelas tr td{
+        font-size: 15px;
+    }
+}
+.acao{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+}
+.button-acao{
+    display: flex;
+    justify-content: center;
+
+}
+.acao span{
+    width: 70px;
+}
+.table-overflow  {
+   max-height: 85vh;
+    overflow-y:auto;
+}

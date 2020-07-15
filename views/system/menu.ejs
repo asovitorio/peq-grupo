@@ -1,0 +1,560 @@
+<%-include('../partials/head-system.ejs')%>
+<main class="contaner">
+    <label for="menu-sanduiche" id="label-sanduiche"> <i class="fas fa-bars"></i></label>
+    <div class="main">
+        <input type="checkbox" id="menu-sanduiche">
+        <aside class="" id="menu">
+
+            <nav id="painel-btn">
+                <div id="foto-profile"><img src="/images/profiles/<%=usuario.avatar %>" alt="foto de perfil"
+                        class="img-thumbnail">
+                </div>
+                <label class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> <span
+                        class="badge <%=usuario.status==1?"badge-secondary":"badge-info"%>" style="padding: 2px;">Status
+                        <span class="badge badge-light">
+                            <%=usuario.status==1?"ADM":'USER'%></label>
+                </span>
+                </span>
+
+                <hr>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="" data-toggle="pill" href="#v-pills-home" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-user-cog'
+                            style='font-size:15px'> Usuários</i></a>
+                    <a class="nav-link" id="menu-peq-grupo" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false"><i class='fas fa-users'
+                            style='font-size:15px'> P. Grupos</i></a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false"><i class='fas fa-pray'
+                            style='font-size:15px'> Relatorio</i></a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                        aria-controls="v-pills-settings" aria-selected="false"><i class='fas fa-bible'
+                            style='font-size:15px'> Lições</i></a>
+                </div>
+                <div id="btn-add-usuario" class="btn-add-peq-grupo"><button type="button" data-toggle="modal"
+                        data-target="#modal-add-usuario"><i class='fas fa-user-plus'></i></button></div>
+                <div id="btn-add-peq-grupo" class="btn-add-peq-grupo"><button type="button" data-toggle="modal"
+                        data-target="#modal-add-peq-grupo"><i class='fas fa-users'><b>+</b></i></button></div>
+            </nav>
+        </aside>
+        <article class="" id="corpo">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <div class="corpo-titulo"><i class='fas fa-user-cog' style='font-size:24px'> Usuários</i></div>
+                    <br>
+                    <div class="table-overflow row">
+                        <div class=" col-sm-12">
+                            <table class="table table-striped" id="tabelas">
+                                <thead id="cabecalho-usuario">
+                                    <tr>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Nome</th>
+                                        <th class="col-email" scope="col">Email</th>
+                                        <th scope="col">Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%resposta.forEach(element=>{%>
+                                    <tr>
+                                        <td class="img-table">
+                                            <div id="avatar-tabela"><img
+                                                    src="/images/profiles/<%=element.pessoas.image%>" width="40px"
+                                                    alt="">
+                                            </div>
+                                        </td>
+                                        <td><%=element.pessoas.nome%></td>
+                                        <td class="col-email"><%=element.email%></td>
+                                        <td>
+                                            <div class="button-acao">
+                                                <span
+                                                    class="badge acao <%=element.status==1?"badge-secondary":element.status==2?"badge-info":"badge-danger"%>"
+                                                    style="padding: 2px; "><%=element.status==1?"ADM":element.status==2?"USER":"INAT"%>
+                                                    <span class="badge badge-light">
+                                                        <!--  <button type="button"  data-toggle="modal"
+                                                        data-target="#modal-add-usuario" usuarioId="<%=element.id%>"  id="editar-usuario" class="btn editar btn-light editar-usuario"><i
+                                                                class='fas fa-pencil-alt  text-info'
+                                                                style='font-size:17px'></i></button>
+                                                        <a href="#" class="btn btn-light delete-usuario"><i
+                                                                class='far fa-trash-alt text-secondary'
+                                                                style='font-size:20px'></i></a> -->
+                                                        <a href="#" class="btn btn-light delete-usuario"><i
+                                                                class='far fa-eye text-info'
+                                                                style='font-size:20px'></i></a>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%});%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- grupo -->
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="corpo-titulo"><i class='fas fa-users' style='font-size:24px'> P. Grupos</i></div>
+                    <br>
+                    <div class="col-sm-3">
+                        <div class="card" id="card-local-peq-grupo">
+                            <div id="box-local-peq-grupo"> <img src="/images/IMG_20180411_111301015~3.jpg"
+                                    class="card-img" id="img-local-peq-grupo" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Conexão Desus é Amor</h5>
+                                <p class="card-text"><b>Alessandro Barbosa Vitorio</b></p>
+                                <p class="card-text">Fone: (11) 95496-5202</p>
+                                <p class="card-text">Bairro: Jd. Ipê</p>
+
+                            </div>
+                            <a href="#" class="btn btn-primary btn-card">Entrar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- relat -->
+
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class="corpo-titulo"><i class='fas fa-pray' style='font-size:24px'> Relatorio</i></div>
+                    <br>
+
+                </div>
+                <!-- lição -->
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="corpo-titulo"><i class='fas fa-bible' style='font-size:24px'> Lições</i></div>
+                    <br>
+                </div>
+        </article>
+    </div>
+    </form>
+</main>
+<!-- modal pequeno grupo -->
+<div class="modal fade" id="modal-add-peq-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-users'><b>+</b></i> Cadastro de P. Grupo
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-peq-grupo" method="post" action="system/cadastro-usuario"
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Nome do Pequeno Grupo</label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Digite o nome Pequeno Grupo" name="peq-grupo" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Anfitrião</label>
+                            <input type="text" class="form-control" id="usuario" list="usuario-list"
+                                placeholder="Digite um usuário" name="anfitriao" value="" required>
+                            <datalist id="usuario-list">
+                                <%for (let index = 0; index < nomeList.length; index++){%>
+                                <option value="<%= nomeList[index] %> "></option>
+                                <% } %>
+                            </datalist>
+
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustomUsername">Imagem</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class='fas fa-image'></i></span>
+                                </div>
+                                <input type="file" class="form-control" id="image" placeholder="Username" name="image"
+                                    aria-describedby="inputGroupPrepend">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-button">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit">Salvar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal usuario -->
+<div class="modal fade" id="modal-add-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-user-plus'></i> Cadastro de Usuário
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-usuario" id="form-usuario" action="system/cadastro-usuario" method="POST"
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Nome</label>
+                            <input type="text" list="usuario-list1" class="form-control" id="nomeUsu" name="nome"
+                                placeholder="Digite o nome completo" value="" required>
+                            <datalist id="usuario-list1">
+                                <%for (let index = 0; index < nomeList.length; index++){%>
+                                <option value="<%= nomeList[index] %> "></option>
+                                <% } %>
+                            </datalist>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="nascimento" name="data_nascimento"
+                                placeholder="Data de nascimento" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite uma data!
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Sexo</label>
+                            <select class="custom-select" id="sexo" name="sexo" required>
+                                <option value="">Escolha o sexo</option>
+                                <option value="masculino">Homem</option>
+                                <option value="feminino">Mulher</option>
+                            </select>
+                            <div class="invalid-feedback">Escolha uma opção</div>
+                            <div class="valid-feedback">Bom!</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustomUsername">Imagem</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class='fas fa-image'></i></span>
+                                </div>
+                                <input type="file" class="form-control" name="image" id="image" placeholder="image"
+                                    aria-describedby="inputGroupPrepend">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone"
+                                placeholder="Digite um telefone" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Digite um email" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Status</label>
+                            <select class="custom-select" id="status" name="status" required>
+                                <option value="">Nível de acesso</option>
+                                <option value="1">ADM</option>
+                                <option value="2">USER</option>
+                                <option value="3">INATIVO</option>
+                            </select>
+                            <div class="invalid-feedback">Escolha uma opção</div>
+                            <div class="valid-feedback">Bom!</div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">CEP</label>
+                            <input type="text" class="form-control" id="cep" name="cep" placeholder="Ex: 05797440"
+                                value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um CEP valido!
+                            </div>
+                        </div>
+                        <div class="col-md-7 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Logradouro</label>
+                            <input type="text" class="form-control" id="logradouro" name="logradouro"
+                                placeholder="Ex: Rua Silvio Gallicho" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um lougradouro!
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Nº</label>
+                            <input type="text" class="form-control" id="numero" name="numero"
+                                placeholder="Nº. Residência" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um Número ou S/N!
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Complemento</label>
+                            <input type="text" class="form-control" id="complemento" name="complemento"
+                                placeholder="Ex: Bl 5 - Ap 203" value="">
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Bairro</label>
+                            <input type="text" class="form-control" id="bairro" name="bairro"
+                                placeholder="Digite o Bairro" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um Bairro!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Cidade</label>
+                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex:São Paulo"
+                                value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite uma Cidade!
+                            </div>
+                        </div>
+                        <div class="col-md-1 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">UF</label>
+                            <input type="text" class="form-control" id="uf" name="uf" placeholder="UF" value=""
+                                required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um UF!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-button">
+                        <button type="button" id="fechar-modal" class="btn btn-secondary"
+                            data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%-include('../partials/footer-system.ejs')%>
+<script>
+    console.log('<%=msgCad%>')
+    '<% if( msgCad){%>'
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.success(`Usuário cadastrado com sucesso!`, toastr.options)
+    '<%}%>'
+    '<% if( msgAtu){%>'
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.success(`Usuário Atualizado com sucesso!`, toastr.options)
+    '<%}%>'
+</script>
+<script>
+    const btnMenu = document.querySelectorAll('.nav-link')
+    const btnPeqGrupo = document.getElementById('menu-peq-grupo');
+    const btnAddPeqGrupo = document.getElementById('btn-add-peq-grupo');
+    const btnAddusuario = document.getElementById('btn-add-usuario');
+    btnMenu.forEach((item, i) => {
+        btnAddusuario.style.display = 'flex';
+        item.addEventListener('click', (e) => {
+            if (i === 1) {
+                btnAddPeqGrupo.style.display = 'flex';
+                btnAddusuario.style.display = 'none';
+            } else if (i === 0) {
+                btnAddusuario.style.display = 'flex';
+                btnAddPeqGrupo.style.display = 'none';
+            } else {
+                btnAddPeqGrupo.style.display = 'none';
+                btnAddusuario.style.display = 'none';
+            }
+        })
+    })
+
+    //     const testeModal = document.getElementById('btn-add-usuario')
+    //     console.log(testeModal)         
+    //     function abreModal() {
+    //  $("#modal-add-usuario").modal({
+    //       show: true
+    //     });
+    //  }
+    // setTimeout(abreModal, 2);
+</script>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('form-peq-grupo');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var formsUser = document.getElementsByClassName('form-usuario');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(formsUser, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    const editar = document.getElementsByClassName('editar-usuario')
+    const formUsu = document.getElementById('form-usuario')
+    const nomeUsu = document.getElementById('nomeUsu')
+    const nascimento = document.getElementById('nascimento')
+    const sexo = document.getElementById('sexo')
+    const telefone = document.getElementById('telefone')
+    const email = document.getElementById('email')
+
+    const status = document.getElementById('status')
+    const cep = document.getElementById('cep');
+    const logradouro = document.getElementById('logradouro');
+    const bairro = document.getElementById('bairro');
+    const cidade = document.getElementById('cidade');
+    const uf = document.getElementById('uf');
+    const numero = document.getElementById('numero');
+    async function buscarCep(cep) {
+        const apiCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const resposta = await apiCep.json();
+        return resposta
+    }
+    async function buscarUsuario(id, api, token) {
+        const API_BASE = `${api}/usuario/${id}`
+        const apiUsuario = await fetch(API_BASE, {
+            method: "GET",
+            //  body: JSON.stringify(req.body),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        const resposta = await apiUsuario.json();
+        return resposta
+    }
+    cep.addEventListener('change', async (e) => {
+        const teste = await buscarCep(cep.value)
+        cep.value = teste.cep
+        logradouro.value = teste.logradouro
+        bairro.value = teste.bairro
+        cidade.value = teste.localidade
+        uf.value = teste.uf
+        numero.focus()
+    })
+
+    function abreModal() {
+        $("#modal-add-usuario").modal({
+            show: true
+        });
+    }
+
+    for (let i = 0; i < editar.length; i++) {
+        editar[i].addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = editar[i].attributes.usuarioId.value;
+            const respUsuario = await buscarUsuario(id, '<%=api%>', '<%=token%>');
+            nomeUsu.value = respUsuario[0].pessoas.nome
+            nascimento.value = respUsuario[0].pessoas.data_nascimento.slice(0, 10)
+            sexo.value = respUsuario[0].pessoas.sexo
+            telefone.value = respUsuario[0].pessoas.telefone
+            email.value = respUsuario[0].email
+            status.value = respUsuario[0].status
+            cep.value = respUsuario[0].pessoas.cep
+            logradouro.value = respUsuario[0].pessoas.logradouro
+            numero.value = respUsuario[0].pessoas.numero
+            complemento.value = respUsuario[0].pessoas.complemento
+            bairro.value = respUsuario[0].pessoas.bairro
+            cidade.value = respUsuario[0].pessoas.cidade
+            uf.value = respUsuario[0].pessoas.uf
+            formUsu.action = `system/cadastro-usuario/${respUsuario[0].id}?_method=PUT`
+
+            //system/cadastro-usuario?_method=PUT
+            console.log(formUsu)
+            // abreModal()
+
+        })
+    }
+</script>
+
+
+</body>
+
+</html>
