@@ -1,0 +1,68 @@
+<%-include('../partials/head-system.ejs')%>
+<main class="contaner">
+    <label for="menu-sanduiche" id="label-sanduiche"> <i class="fas fa-bars"></i></label>
+    <div class="main">
+        <input type="checkbox" id="menu-sanduiche">
+        <aside class="" id="menu">
+
+            <nav id="painel-btn">
+                <div id="foto-profile"><img src="/images/profiles/<%=usuario.avatar %>" alt="foto de perfil"
+                    class="img-thumbnail">
+            </div>
+            <label class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> <span
+                    class="badge <%=usuario.status==1?"badge-secondary":"badge-info"%>" style="padding: 2px;">Status
+                    <span class="badge badge-light">
+                        <%=usuario.status==1?"ADM":'USER'%></label>
+            </span>
+            </span>
+                <hr>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#usuarioView" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-edit'
+                            style='font-size:15px'> Atualizar</i></a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#editar-usuarios" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false"><i class='far fa-trash-alt'
+                            style='font-size:15px'> Excluir </i></a>
+                    <a class="nav-link"   href="/system" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false"><i class='fas fa-reply'
+                            style='font-size:15px'> Voltar</i></a>
+                </div>
+            </nav>
+        </aside>
+        <article class="" id="corpo">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active usuario-cabecalho" id="usuarioView" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class=""><div id="foto-profile"><img src="/images/pastor.jpg" alt="..." class="img-thumbnail">
+                    </div>
+                                        
+                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> <span
+                        class="badge <%=usuario.status==1?"badge-secondary":"badge-info"%>" style="padding: 2px;">Status
+                        <span class="badge badge-light">
+                            <%=usuario.status==1?"ADM":'USER'%></label></label>
+                </div>
+                
+                    <div class="row">
+                    </div>
+                </div>
+                
+                <!-- relat -->
+
+                <div class="tab-pane fade usuario-cabecalho" id="editar-usuarios" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class=""><div id="foto-profile"><img src="/images/pastor.jpg" alt="..." class="img-thumbnail">
+                    </div>
+                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> <span
+                        class="badge <%=usuario.status==1?"badge-secondary":"badge-info"%>" style="padding: 2px;">Status
+                        <span class="badge badge-light">
+                            <%=usuario.status==1?"ADM":'USER'%></label></label>
+                </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </article>
+    </div>
+</main>
+<%-include('../partials/footer-system.ejs')%>
