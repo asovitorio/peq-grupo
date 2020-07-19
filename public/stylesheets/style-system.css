@@ -464,18 +464,43 @@ margin-left: 10px;
 
 .usuario-cabecalho{
   display: flex;
-  
   justify-content: center;
-  border-bottom: 3px solid var(--color1);
-  margin-right: 10px;
-  margin-top: 42px;
+  /* border-bottom: 3px solid var(--color1); */
+  margin-left: -15px;
+  
 }
 #nome-usuario-view{
     display: block;
     text-align: center;
     font-size: 20px;
     margin-bottom: 10px;
-
+   
+}
+.usuario-view-main{
+    display: flex;
+    justify-content: center;
+   
+}
+.dados-usuario{
+    border: 3px solid var(--color1);
+    width: 90%;
+}
+#foto-profile-view {
+    display: flex;
+    justify-content: center;
+    height: 140px;
+    background: linear-gradient(90deg,var(--color2),var(--color1),var(--color2));
+   padding: 20px;
+   position: relative;
+   margin-bottom: 20px;
 }
 
-
+#foto-profile-view img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 1px solid #75c2db;
+    position: absolute;
+    top: 60px;
+  
+}
