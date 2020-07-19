@@ -19,7 +19,7 @@ var upload = multer({ storage: storage })
  
 router.get('/',systemControllers.index)
 router.get('/logout',systemControllers.logout)
-router.get('/membro',systemControllers.cadastroMenbroView)
+router.get('/visualizar-usuario/:id',systemControllers.usuarioView)
 router.post('/cadastro-usuario',upload.any(),systemControllers.cadastroUsuario)
 router.put('/cadastro-usuario/:id',upload.any(),systemControllers.atualizar)
 

@@ -55,8 +55,15 @@ const systemControllers = {
       api:API_BASE
      });
   },
-  cadastroMenbroView: (req, res) => {
-    res.render('./system/pessoaLista');
+ usuarioView: (req, res) => {
+   //REcebe o token que foi gerado pelo login da API
+   const token = req.session.token
+   //Verifica o usuário dono do token
+   const usuario = jwt.verify(token, jwtSecret)
+    res.render('./system/usuarioView',{
+      usuario
+    });
+    
   },
   logout: (req, res) => {
     req.session.token = "";
