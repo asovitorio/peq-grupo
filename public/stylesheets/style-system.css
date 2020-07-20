@@ -484,6 +484,8 @@ margin-left: 10px;
 .dados-usuario{
     color: var(--color1);
     width: 90%;
+ 
+
    
 }
 #foto-profile-view {
@@ -516,6 +518,23 @@ margin-left: 10px;
     padding: 15px;
     border-radius: 3px; 
     border-left:10px solid var(--color2);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.267);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.219);
     margin-bottom: 10px;
+}
+#div-nome-atualizar{
+    display: flex;
+    justify-content: center;
+    
+}
+.input-usuario-atualizar{
+    margin-top: 10px;
+    width: 90%;
+    text-align: center;
+    font-size: 20px;
+    color: var(--color1);
+    font-weight: bolder;
+}
+#status-atualizar{
+    height:26px;
+    color: var(--color1);
 }

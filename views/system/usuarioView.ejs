@@ -81,17 +81,65 @@
                 <div class="tab-pane fade usuario-cabecalho" id="editar-usuarios" role="tabpanel"
                     aria-labelledby="v-pills-messages-tab">
                     <div class="">
-                        <div id="foto-profile"><img src="/images/pastor.jpg" alt="..." class="img-thumbnail">
+                        <form>
+                        <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>" alt="..." class="img-thumbnail">
                         </div>
-                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> <span
-                                class="badge <%=usuario.status==1?"badge-secondary":"badge-info"%>"
+                        <div id="div-nome-atualizar"> <input type="text" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.nome %>" > </div>
+                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
+                           </b> <span
+                                class="badge <%=resposta[0].status==1?"badge-secondary":"badge-info"%>"
                                 style="padding: 2px;">Status
                                 <span class="badge badge-light">
-                                    <%=usuario.status==1?"ADM":'USER'%></label></label>
+                                    <select class="custom-select" id="status-atualizar" name="status" required>
+                                        <option value="<%= resposta[0].status %>"><%=resposta[0].status=="1"?"ADM":'USER'%></option>
+                                        <% if(resposta[0].status==1){%> 
+                                            <option value="2">USER</option>
+                                            <option value="3">INATIVO</option>
+                                        <% }else if(resposta[0].status==2){%>
+                                            <option value="1">ADM</option>
+                                            <option value="3">INATIVO</option>
+                                        <%}else{%>
+                                            <option value="1">ADM</option>
+                                            <option value="2">USER</option>
+                                        <%}%>      
+                                       
+                                        
+                                    </select>
+                                  
                     </div>
-                    <div class="row">
-
+                    <div class="row usuario-view-main">
+                        <div class="dados-usuario">
+                            <div class="dados-card">
+                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
+                          <i class='fas fa-calendar-alt'>
+                           Nascimento: <%=moment(resposta[0].pessoas.data_nascimento).format("DD/MM/YYYY")%></i>
+                               <br>
+                           <i class='fas fa-venus-mars'>
+                              Sexo: <%=resposta[0].pessoas.sexo%></i>
+                        </div>
+                            <div class="dados-card">
+                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Contato</span></label><br>
+                          <i class='fas fa-at'>
+                             Email:  <%=resposta[0].email%></i>
+                               <br>
+                           <i class='fas fa-phone'>
+                               Telefone: <%=BrM.phone(resposta[0].pessoas.telefone)%></i>
+                        </div>
+                            <div class="dados-card">
+                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Endereço</span></label><br>
+                          <i class='fas fa-map-marker-alt'>
+                            <%=resposta[0].pessoas.logradouro%> Nº  <%=resposta[0].pessoas.numero%> - <%=resposta[0].pessoas.bairro%></i>
+                            <%if(resposta[0].pessoas.complemento!=""){%>
+                               <br> <b> Complemento:  <%=resposta[0].pessoas.complemento%></b>
+                               <%}%><br>
+                           <i class='fas fa-map-signs'>
+                              CEP: 05797-440</i><br>
+                           <i class='fas fa-map'>
+                              Cidade: São Paulo - SP</i>
+                        </div>
                     </div>
+                    </div>
+                </form>
                 </div>
 
 
