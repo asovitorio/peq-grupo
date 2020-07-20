@@ -6,6 +6,8 @@ const API_BASE = process.env.API_BASE
 require('dotenv').config()
 const bcrypt = require('bcrypt');
 const senhaAdm = process.env.USER_PASS;
+const moment = require('moment')
+const BrM = require('br-masks');
 
 const systemControllers = {
   index: async (req, res) => {
@@ -55,15 +57,39 @@ const systemControllers = {
       api:API_BASE
      });
   },
- usuarioView: (req, res) => {
+ usuarioView: async (req, res) => {
    //REcebe o token que foi gerado pelo login da API
    const token = req.session.token
    //Verifica o usuário dono do token
    const usuario = jwt.verify(token, jwtSecret)
-    res.render('./system/usuarioView',{
-      usuario
-    });
+   try {
     
+    const usuarioView = await fetch(`${API_BASE}/usuario/${req.params.id}`, {
+      method: "GET",
+      //  body: JSON.stringify(req.body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    //resposta da API
+    const resposta = await usuarioView.json()
+    console.log(moment(resposta[0].pessoas.data_nascimento).format("DD/MM/YYYY"))
+      res.render('./system/usuarioView',{
+        usuario,
+        resposta,
+        moment,
+        BrM
+      });
+      
+
+   } catch (error) {
+      
+    res.status(400).json(error)
+
+   }
+  
   },
   logout: (req, res) => {
     req.session.token = "";
@@ -132,7 +158,7 @@ const systemControllers = {
        } catch (error) {
         res.status(400).json(error)
        }
-      res.send(usuario)
+      // res.send(usuario)
       
      }
 }
