@@ -84,7 +84,7 @@
                         <form>
                         <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>" alt="foto  do perfil" class="img-thumbnail">
                         </div>
-                        <div id="div-nome-atualizar"> <input type="text" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.nome %>" > </div>
+                        <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.nome %>"> </div>
                         <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
                            </b> <span
                                 class="badge <%=resposta[0].status==1?"badge-secondary":"badge-info"%>"
@@ -108,19 +108,29 @@
                         <div class="dados-usuario">
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
-                          <i class='fas fa-calendar-alt'>
-                           Nascimento: <%=moment(resposta[0].pessoas.data_nascimento).format("DD/MM/YYYY")%></i>
+                          <i class='fas fa-calendar-alt pai-select-atualizar'>
+                           Nascimento:<input class="select-dados-atualizar" type="date" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.data_nascimento.slice(0,10)%>"></i> 
                                <br>
-                           <i class='fas fa-venus-mars'>
-                              Sexo: <%=resposta[0].pessoas.sexo%></i>
+                           <i class='fas fa-venus-mars pai-select-atualizar'>
+                              Sexo: <select name="sexo" class="select-dados-atualizar">
+                                 <% if(resposta[0].pessoas.sexo=="masculino"){%>
+                                    <option value="">Masculino</option>
+                                    <option value="">Feminino</option>
+                                 <%}else{%>
+                                    <option value="">Feminino</option>
+                                    <option value="">Masculino</option>
+                                 <%}%> 
+                               
+                              </select>
+                              </i>
                         </div>
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Contato</span></label><br>
-                          <i class='fas fa-at'>
-                             Email:  <%=resposta[0].email%></i>
+                          <i class='fas fa-at  pai-select-atualizar'>
+                             Email:  <input type="email" class="form-control input-atualizar" id="inputEmail3" value="<%=resposta[0].email%>"></i>
                                <br>
-                           <i class='fas fa-phone'>
-                               Telefone: <%=BrM.phone(resposta[0].pessoas.telefone)%></i>
+                           <i class='fas fa-phone pai-select-atualizar'>
+                               Telefone: <input type="tel" class="form-control input-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.telefone%>"required> </i>
                         </div>
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Endereço</span></label><br>
@@ -138,8 +148,6 @@
                     </div>
                 </form>
                 </div>
-
-
             </div>
         </article>
     </div>
