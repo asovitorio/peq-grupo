@@ -36,9 +36,11 @@
                 <div class="tab-pane fade show active usuario-cabecalho" id="usuarioView" role="tabpanel"
                     aria-labelledby="v-pills-home-tab">
                     <div class="">
-                        <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>" alt="..." class="img-thumbnail">
+                        <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>"
+                                alt="..." class="img-thumbnail">
                         </div>
-                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b> <%=resposta[0].pessoas.nome %></b><br> <span
+                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
+                                <%=resposta[0].pessoas.nome %></b><br> <span
                                 class="badge <%=resposta[0].status==1?"badge-secondary":"badge-info"%>"
                                 style="padding: 2px;">Status
                                 <span class="badge badge-light">
@@ -47,34 +49,39 @@
                     <div class="row usuario-view-main">
                         <div class="dados-usuario">
                             <div class="dados-card">
-                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
-                          <i class='fas fa-calendar-alt'>
-                           Nascimento: <%=moment(resposta[0].pessoas.data_nascimento).format("DD/MM/YYYY")%></i>
-                               <br>
-                           <i class='fas fa-venus-mars'>
-                              Sexo: <%=resposta[0].pessoas.sexo%></i>
-                        </div>
+                                <label for="" class="nome-campo-usuario"><span
+                                        class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
+                                <i class='fas fa-calendar-alt'>
+                                    Nascimento:
+                                    <%=moment(resposta[0].pessoas.data_nascimento).format("DD/MM/YYYY")%></i>
+                                <br>
+                                <i class='fas fa-venus-mars'>
+                                    Sexo: <%=resposta[0].pessoas.sexo%></i>
+                            </div>
                             <div class="dados-card">
-                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Contato</span></label><br>
-                          <i class='fas fa-at'>
-                             Email:  <%=resposta[0].email%></i>
-                               <br>
-                           <i class='fas fa-phone'>
-                               Telefone: <%=BrM.phone(resposta[0].pessoas.telefone)%></i>
-                        </div>
+                                <label for="" class="nome-campo-usuario"><span
+                                        class="badge badge-pill  label-dados-view">Contato</span></label><br>
+                                <i class='fas fa-at'>
+                                    Email: <%=resposta[0].email%></i>
+                                <br>
+                                <i class='fas fa-phone'>
+                                    Telefone: <%=BrM.phone(resposta[0].pessoas.telefone)%></i>
+                            </div>
                             <div class="dados-card">
-                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Endereço</span></label><br>
-                          <i class='fas fa-map-marker-alt'>
-                            <%=resposta[0].pessoas.logradouro%> Nº  <%=resposta[0].pessoas.numero%> - <%=resposta[0].pessoas.bairro%></i>
-                            <%if(resposta[0].pessoas.complemento!=""){%>
-                               <br> <b> Complemento:  <%=resposta[0].pessoas.complemento%></b>
-                               <%}%><br>
+                                <label for="" class="nome-campo-usuario"><span
+                                        class="badge badge-pill  label-dados-view">Endereço</span></label><br>
+                                <i class='fas fa-map-marker-alt'>
+                                    <%=resposta[0].pessoas.logradouro%> Nº <%=resposta[0].pessoas.numero%> -
+                                    <%=resposta[0].pessoas.bairro%></i>
+                                <%if(resposta[0].pessoas.complemento!=""){%>
+                                <br> <b> Complemento: <%=resposta[0].pessoas.complemento%></b>
+                                <%}%><br>
                            <i class='fas fa-map-signs'>
-                              CEP: 05797-440</i><br>
-                           <i class='fas fa-map'>
-                              Cidade: São Paulo - SP</i>
+                              CEP: <%=resposta[0].pessoas.cep%></i><br>
+                                <i class='fas fa-map'>
+                                    Cidade: <%=resposta[0].pessoas.cidade%> - <%=resposta[0].pessoas.uf%></i>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <!-- relat -->
@@ -82,26 +89,34 @@
                     aria-labelledby="v-pills-messages-tab">
                     <div class="">
                         <form>
-                        <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>" alt="foto  do perfil" class="img-thumbnail">
-                        </div>
-                        <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.nome %>"> </div>
-                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
-                           </b> <span
-                                class="badge <%=resposta[0].status==1?"badge-secondary":"badge-info"%>"
-                                style="padding: 2px;">Status
-                                <span class="badge badge-light">
-                                    <select class="custom-select" id="status-atualizar" name="status" required>
-                                        <option value="<%= resposta[0].status %>"><%=resposta[0].status=="1"?"ADM":'USER'%></option>
-                                        <% if(resposta[0].status==1){%> 
+                            <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>"
+                                    alt="foto  do perfil" class="img-thumbnail">
+                                    <div class="div-image">
+                                                 
+                                    <label for="edit-image-usuario" class="icone-edit-image"><i class="fas fa-pencil-alt"></i>
+                                          <input type="file" id="edit-image-usuario">
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar"
+                                    id="inputEmail3" value="<%=resposta[0].pessoas.nome %>"> </div>
+                            <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
+                                </b> <span class="badge <%=resposta[0].status==1?"badge-secondary":"badge-info"%>"
+                                    style="padding: 2px;">Status
+                                    <span class="badge badge-light">
+                                        <select class="custom-select" id="status-atualizar" name="status" required>
+                                            <option value="<%= resposta[0].status %>">
+                                                <%=resposta[0].status=="1"?"ADM":'USER'%></option>
+                                            <% if(resposta[0].status==1){%>
                                             <option value="2">USER</option>
                                             <option value="3">INATIVO</option>
-                                        <% }else if(resposta[0].status==2){%>
+                                            <% }else if(resposta[0].status==2){%>
                                             <option value="1">ADM</option>
                                             <option value="3">INATIVO</option>
-                                        <%}else{%>
+                                            <%}else{%>
                                             <option value="1">ADM</option>
                                             <option value="2">USER</option>
-                                        <%}%>      
+                                            <%}%>      
                                     </select>
                     </div>
                     <div class="row usuario-view-main ">
@@ -109,18 +124,17 @@
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
                           <i class='fas fa-calendar-alt pai-select-atualizar'>
-                           Nascimento:<input class="select-dados-atualizar" type="date" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.data_nascimento.slice(0,10)%>"></i> 
-                               <br>
-                           <i class='fas fa-venus-mars pai-select-atualizar'>
-                              Sexo: <select name="sexo" class="select-dados-atualizar">
-                                 <% if(resposta[0].pessoas.sexo=="masculino"){%>
-                                    <option value="">Masculino</option>
-                                    <option value="">Feminino</option>
-                                 <%}else{%>
-                                    <option value="">Feminino</option>
-                                    <option value="">Masculino</option>
-                                 <%}%> 
-                               
+                           Nascimento:<input class="select-dados-atualizar" type="date" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.data_nascimento.slice(0,10)%>"></i>
+                                            <br>
+                                            <i class='fas fa-venus-mars pai-select-atualizar'>
+                                                Sexo: <select name="sexo" class="select-dados-atualizar">
+                                                    <% if(resposta[0].pessoas.sexo=="masculino"){%>
+                                                    <option value="">Masculino</option>
+                                                    <option value="">Feminino</option>
+                                                    <%}else{%>
+                                                    <option value="">Feminino</option>
+                                                    <option value="">Masculino</option>
+                                                    <%}%> 
                               </select>
                               </i>
                         </div>
@@ -128,28 +142,47 @@
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Contato</span></label><br>
                           <i class='fas fa-at  pai-select-atualizar'>
                              Email:  <input type="email" class="form-control input-atualizar" id="inputEmail3" value="<%=resposta[0].email%>"></i>
-                               <br>
-                           <i class='fas fa-phone pai-select-atualizar'>
-                               Telefone: <input type="tel" class="form-control input-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.telefone%>"required> </i>
-                        </div>
-                            <div class="dados-card">
-                            <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Endereço</span></label><br>
-                          <i class='fas fa-map-marker-alt'>
-                            <%=resposta[0].pessoas.logradouro%> Nº  <%=resposta[0].pessoas.numero%> - <%=resposta[0].pessoas.bairro%></i>
-                            <%if(resposta[0].pessoas.complemento!=""){%>
-                               <br> <b> Complemento:  <%=resposta[0].pessoas.complemento%></b>
-                               <%}%><br>
-                           <i class='fas fa-map-signs'>
-                              CEP: 05797-440</i><br>
-                           <i class='fas fa-map'>
-                              Cidade: São Paulo - SP</i>
-                        </div>
+                                            <br>
+                                            <i class='fas fa-phone pai-select-atualizar'>
+                                                Telefone: <input type="tel" class="form-control input-atualizar"
+                                                    id="inputEmail3" value="<%=resposta[0].pessoas.telefone%>" required>
+                                            </i>
                     </div>
+                    <div class="dados-card">
+                        <label for="" class="nome-campo-usuario"><span
+                                class="badge badge-pill  label-dados-view">Endereço</span></label><br>
+                        <i class='fas fa-map-marker-alt pai-select-atualizar'>
+                            Lougradoro <input type="tel" class="form-control input-atualizar" id="inputEmail3"
+                                value="<%=resposta[0].pessoas.logradouro%> "> Nº <input type="text"
+                                class="form-control input-atualizar numero" id="inputEmail3"
+                                value=" <%=resposta[0].pessoas.numero%>"> - <input type="text"
+                                class="form-control input-atualizar bairro" id="inputEmail3"
+                                value=" <%=resposta[0].pessoas.bairro%>"> </i>
+                        <br> <b class="pai-select-atualizar"> Complemento: <input type="text"
+                                class="form-control input-atualizar" id="inputEmail3"
+                                value=" <%=resposta[0].pessoas.complemento%>"> </b>
+                        <br>
+                        <i class='fas fa-map-signs pai-select-atualizar'>
+                            CEP: <input type="text" class="form-control input-atualizar" id="inputEmail3"
+                                value=" <%=resposta[0].pessoas.cep%>"></i><br>
+                        <i class='fas fa-map pai-select-atualizar'>
+                            Cidade: <input type="text" class="form-control input-atualizar" id="inputEmail3"
+                                value=" <%=resposta[0].pessoas.cidade%>"> -<input type="text"
+                                class="form-control input-atualizar numero" id="inputEmail3"
+                                value=" <%=resposta[0].pessoas.uf%>"></i>
                     </div>
-                </form>
+                </div>
+                <div class="group-button botoes-atualizar">
+                    <a href="/system/visualizar-usuario/<%=resposta[0].id%>"> <button type="button" id="fechar-modal" class="btn btn-secondary"
+                        data-dismiss="modal">Fechar</button></a>
+                    <button class="btn btn-info" type="submit">Atualizar</button>
                 </div>
             </div>
-        </article>
+           
+            </form>
+    </div>
+    </div>
+    </article>
     </div>
 </main>
 <%-include('../partials/footer-system.ejs')%>
