@@ -88,7 +88,8 @@
                 <div class="tab-pane fade usuario-cabecalho" id="editar-usuarios" role="tabpanel"
                     aria-labelledby="v-pills-messages-tab">
                     <div class="">
-                        <form>
+                        <form method="POST" action="/system/cadastro-usuario/1?_method=PUT" enctype="multipart/form-data">
+                                            
                             <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>"
                                     alt="foto  do perfil" class="img-thumbnail">
                                     <div class="div-image">
@@ -177,9 +178,10 @@
                         data-dismiss="modal">Fechar</button></a>
                     <button class="btn btn-info" type="submit">Atualizar</button>
                 </div>
+            </form>  
             </div>
            
-            </form>
+           
     </div>
     </div>
     </article>

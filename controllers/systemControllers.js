@@ -127,37 +127,39 @@ const systemControllers = {
      }
      },
      atualizar: async (req,res) =>{
-      const [avatar] = req.files
-      const foto = (arq) => {
-        if (arq == undefined) {
-          return "avatar.png"
-        } else {
-          return arq.filename
-        }
-      }
-       let image = foto(avatar)
-       const usuario = req.body
-       usuario.image = image
-       usuario.senha = bcrypt.hashSync(senhaAdm,10)
-       usuario.id = req.params.id
-       const token = req.session.token
+      
+      res.send(req.params)
+      // const [avatar] = req.files
+      // const foto = (arq) => {
+      //   if (arq == undefined) {
+      //     return "avatar.png"
+      //   } else {
+      //     return arq.filename
+      //   }
+      // }
+      //  let image = foto(avatar)
+      //  const usuario = req.body
+      //  usuario.image = image
+      //  usuario.senha = bcrypt.hashSync(senhaAdm,10)
+      //  usuario.id = req.params.id
+      //  const token = req.session.token
 
-       try {
-        const cadastroUsuario = await fetch(`${API_BASE}/usuario`, {
-          method: "PUT",
-          body: JSON.stringify(usuario),
-          headers: {
-           'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-          }
-        })
-        const resposta = await cadastroUsuario.json()
-        msg = `Usuário ${resposta.email} Atualizado com sucesso!`
-        req.flash('atualizado',msg)
-         res.redirect('/system')
-       } catch (error) {
-        res.status(400).json(error)
-       }
+      //  try {
+      //   const cadastroUsuario = await fetch(`${API_BASE}/usuario`, {
+      //     method: "PUT",
+      //     body: JSON.stringify(usuario),
+      //     headers: {
+      //      'Content-Type': 'application/json',
+      //       'Authorization': 'Bearer ' + token
+      //     }
+      //   })
+      //   const resposta = await cadastroUsuario.json()
+      //   msg = `Usuário ${resposta.email} Atualizado com sucesso!`
+      //   req.flash('atualizado',msg)
+      //    res.redirect('/system')
+      //  } catch (error) {
+      //   res.status(400).json(error)
+      //  }
       // res.send(usuario)
       
      }
