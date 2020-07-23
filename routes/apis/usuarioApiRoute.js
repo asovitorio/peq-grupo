@@ -8,6 +8,7 @@ router.get('/:id',authApi.auth,usuarioApiController.index);
 router.post('/',authApi.auth,usuarioApiController.create);
 router.put('/',authApi.auth,usuarioApiController.update);
 router.put('/:id',authApi.auth,usuarioApiController.update);
+router.put('/atualizar/:id',usuarioApiController.updateSystem);
 router.delete('/',authApi.auth,usuarioApiController.delete);
 router.delete('/:id',authApi.auth,usuarioApiController.delete);
 

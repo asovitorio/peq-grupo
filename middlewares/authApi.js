@@ -15,7 +15,6 @@ const authApi ={
             req.usuarioLoagado = usuario
             console.log(usuario.status)
             if(usuario.status==1 || usuario.status==2){
-               
                 next()
             }else{
                 console.log(usuario.status)

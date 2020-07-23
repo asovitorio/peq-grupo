@@ -63,7 +63,6 @@ const systemControllers = {
    //Verifica o usuário dono do token
    const usuario = jwt.verify(token, jwtSecret)
    try {
-    
     const usuarioView = await fetch(`${API_BASE}/usuario/${req.params.id}`, {
       method: "GET",
       //  body: JSON.stringify(req.body),
@@ -82,14 +81,9 @@ const systemControllers = {
         moment,
         BrM
       });
-      
-
    } catch (error) {
-      
     res.status(400).json(error)
-
    }
-  
   },
   logout: (req, res) => {
     req.session.token = "";
@@ -127,40 +121,37 @@ const systemControllers = {
      }
      },
      atualizar: async (req,res) =>{
-      
-      res.send(req.params)
-      // const [avatar] = req.files
-      // const foto = (arq) => {
-      //   if (arq == undefined) {
-      //     return "avatar.png"
-      //   } else {
-      //     return arq.filename
-      //   }
-      // }
-      //  let image = foto(avatar)
-      //  const usuario = req.body
-      //  usuario.image = image
-      //  usuario.senha = bcrypt.hashSync(senhaAdm,10)
-      //  usuario.id = req.params.id
-      //  const token = req.session.token
+      const [avatar] = req.files
+      const foto = (arq) => {
+        if (arq == undefined) {
+          return req.body.image
+        } else {
+          return arq.filename
+        }
+      }
+       let image = foto(avatar)
+       const usuario = req.body
+       usuario.image = image
+       usuario.id = req.params.id
+       const token = req.session.token
 
-      //  try {
-      //   const cadastroUsuario = await fetch(`${API_BASE}/usuario`, {
-      //     method: "PUT",
-      //     body: JSON.stringify(usuario),
-      //     headers: {
-      //      'Content-Type': 'application/json',
-      //       'Authorization': 'Bearer ' + token
-      //     }
-      //   })
-      //   const resposta = await cadastroUsuario.json()
-      //   msg = `Usuário ${resposta.email} Atualizado com sucesso!`
-      //   req.flash('atualizado',msg)
-      //    res.redirect('/system')
-      //  } catch (error) {
-      //   res.status(400).json(error)
-      //  }
-      // res.send(usuario)
+       try {
+        const cadastroUsuario = await fetch(`${API_BASE}/usuario/atualizar/${req.params.id}`, {
+          method: "PUT",
+          body: JSON.stringify(usuario),
+          headers: {
+           'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          }
+        })
+        const resposta = await cadastroUsuario.json()
+        msg = `Usuário ${resposta.email} Atualizado com sucesso!`
+        req.flash('atualizado',msg)
+         res.redirect('/system')
+       } catch (error) {
+        res.status(400).json(error)
+       }
+    
       
      }
 }
