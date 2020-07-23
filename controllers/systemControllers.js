@@ -147,7 +147,7 @@ const systemControllers = {
         const resposta = await cadastroUsuario.json()
         msg = `Usuário ${resposta.email} Atualizado com sucesso!`
         req.flash('atualizado',msg)
-         res.redirect('/system')
+         res.redirect('/system/visualizar-usuario/' + req.params.id)
        } catch (error) {
         res.status(400).json(error)
        }
