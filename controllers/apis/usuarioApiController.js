@@ -206,7 +206,86 @@ const usuarioApiController = {
            return res.status(400).json(error);
         };
     },
-   
+    updateSystem: async (req,res) =>{
+      let id
+      let dados
+  
+      if(Object.keys(req.params).length === 0) {
+          //Permite alterações enviando todas informações pelo body
+          id = req.body.id;
+          dados = req.body;
+        
+              
+      } else if(Object.keys(req.query).length === 0) {
+          //Permite alterações enviando id pelo endpoint e informações pelo body [/usuarios/:id]
+          id = req.params.id;
+          dados = req.body;
+       
+      } else {
+          //Permite alterações enviando id pelo endpoint e informações por query [/usuarios/:id?atributo=valorAtualizado]
+          id = req.params.id;
+          dados = req.query;
+        
+      }
+
+       const usu = await Usuario.findByPk(id);
+    const  usuario = {
+        id,
+        email:dados.email,
+        status:dados.status
+      }
+
+    const pessoas = {
+      id:usu.pessoa_id,
+      nome:dados.nome,
+      data_nascimento:dados.data_nascimento,
+      sexo:dados.sexo,
+      telefone:dados.telefone,
+      image:dados.image,
+      cep:dados.cep,
+      logradouro:dados.logradouro,
+      numero:dados.numero,
+      complemento:dados.complemento,
+      bairro:dados.bairro,
+      cidade:dados.cidade,
+      uf:dados.uf
+          }
+          const usuPes = {
+            usuario,
+            pessoas
+          }
+
+      try {
+        await sequelize.transaction(async (t) => {
+           
+          await Pessoa.update(pessoas,{
+                where: {
+                    id
+                },
+                transaction: t
+            });
+            return;
+        })
+        await sequelize.transaction(async (t) => {
+           
+          await Usuario.update(usuario,{
+                where: {
+                    id
+                },
+                transaction: t
+            });
+            return;
+        })
+
+        
+      //const result = await Usuario.findByPk(id);
+    
+           return res.status(200).json(usuPes);
+        } catch (error) {
+           return res.status(400).json(error);
+        };
+    
+    },
    delete: async (req,res) =>{
     let id
     if(Object.keys(req.params).length === 0) {

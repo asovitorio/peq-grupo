@@ -63,7 +63,6 @@ const systemControllers = {
    //Verifica o usuário dono do token
    const usuario = jwt.verify(token, jwtSecret)
    try {
-    
     const usuarioView = await fetch(`${API_BASE}/usuario/${req.params.id}`, {
       method: "GET",
       //  body: JSON.stringify(req.body),
@@ -82,14 +81,9 @@ const systemControllers = {
         moment,
         BrM
       });
-      
-
    } catch (error) {
-      
     res.status(400).json(error)
-
    }
-  
   },
   logout: (req, res) => {
     req.session.token = "";
@@ -130,7 +124,7 @@ const systemControllers = {
       const [avatar] = req.files
       const foto = (arq) => {
         if (arq == undefined) {
-          return "avatar.png"
+          return req.body.image
         } else {
           return arq.filename
         }
@@ -138,12 +132,11 @@ const systemControllers = {
        let image = foto(avatar)
        const usuario = req.body
        usuario.image = image
-       usuario.senha = bcrypt.hashSync(senhaAdm,10)
        usuario.id = req.params.id
        const token = req.session.token
 
        try {
-        const cadastroUsuario = await fetch(`${API_BASE}/usuario`, {
+        const cadastroUsuario = await fetch(`${API_BASE}/usuario/atualizar/${req.params.id}`, {
           method: "PUT",
           body: JSON.stringify(usuario),
           headers: {
@@ -158,7 +151,7 @@ const systemControllers = {
        } catch (error) {
         res.status(400).json(error)
        }
-      // res.send(usuario)
+    
       
      }
 }
