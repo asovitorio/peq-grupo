@@ -519,6 +519,13 @@ margin-left: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.219);
     margin-bottom: 10px;
 }
+.dados-card label{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.dados-card label i{
+    margin-right: 5px;
+}
 #div-nome-atualizar{
     display: flex;
     justify-content: center;
@@ -537,7 +544,7 @@ margin-left: 10px;
     color: var(--color1);
 }
 .input-dados-atualizar{
-    width: 40%;
+    /* width: 40%; */
     color: var(--color1);
     border: 1px solid var(--color1);
     margin-bottom: 10px;
@@ -548,12 +555,12 @@ margin-left: 10px;
    }
 .input-atualizar{
    color: var(--color1);
-   width: 40%;
+   /* width: 40%; */
    margin-left: 5px;
    margin-right: 5px;
 }
 .select-dados-atualizar{
-    width: 40%;
+    /* width: 40%; */
     height: 35px;;
     color: var(--color1);
     border: 1px solid var(--color1);
@@ -561,11 +568,22 @@ margin-left: 10px;
     border-radius: 5px;
 }
 .numero{
-    width: 15%;
+    /* width: 15%; */
     margin-left: 5px;
 }
 .bairro{
-    width: 30%;
+    /* width: 30%; */
+}
+.endereco{
+    display: flex;
+    flex-direction: column;
+
+}
+.endereco div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
 }
 .icone-edit-image{
 color:var(--color1) ;

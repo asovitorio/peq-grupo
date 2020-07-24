@@ -42,13 +42,14 @@
                     <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#editar-usuarios" role="tab"
                         aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-edit'
                             style='font-size:15px'> Atualizar</i></a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#" role="tab"
-                        aria-controls="v-pills-profile" aria-selected="false"><i class='far fa-trash-alt'
-                            style='font-size:15px'> Excluir </i></a>
+                    <a class="nav-link" id="v-pills-profile-tab"  href="#" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false"> <i class='far fa-trash-alt'
+                            style='font-size:15px' data-toggle="modal"  data-target="#modal-excluir-usuario"> Excluir </i></a>
                     <a class="nav-link" href="/system" role="tab" aria-controls="v-pills-messages"
                         aria-selected="false"><i class='fas fa-reply' style='font-size:15px'> Voltar</i></a>
                 </div>
             </nav>
+           
         </aside>
         <article class="" id="corpo">
             <div class="tab-content" id="v-pills-tabContent">
@@ -122,10 +123,10 @@
                 <div class="tab-pane fade usuario-cabecalho" id="editar-usuarios" role="tabpanel"
                     aria-labelledby="v-pills-messages-tab">
                     <div class="">
-                        <form method="POST" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=PUT" enctype="multipart/form-data">
+                        <form class="" method="POST" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=PUT" enctype="multipart/form-data">
                             <input type="hidden" name="image" value="<%=resposta[0].pessoas.image%>">
                          
-                            <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image%>"
+                            <div  id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image%>"
                                     alt="foto  do perfil" class="img-thumbnail">
                                     <div class="div-image">
                                     <label for="edit-image-usuario" class="icone-edit-image"><i id="camera" class="fas fa-camera"></i>
@@ -133,7 +134,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar"
+                            <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar "
                                     id="inputEmail3" value="<%=resposta[0].pessoas.nome %>" name="nome" > </div>
                             <label id="nome-usuario-view" class="perfil-usuario" for="">
                                 <%if(resposta[0].status==1){%>
@@ -164,11 +165,12 @@
                                             <%}%>      
                                     </select>
                     </div>
-                    <div class="row usuario-view-main ">
+                    <div class="form-row usuario-view-main ">
                         <div class="dados-usuario">
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
-                          <i class='fas fa-calendar-alt pai-select-atualizar'>
+                          <div class="col-md-12 mb-3">
+                            <i class='fas fa-calendar-alt pai-select-atualizar'>
                            Nascimento:<input name="data_nascimento" class="select-dados-atualizar" type="date" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.data_nascimento.slice(0,10)%>"></i>
                                             <br>
                                             <i class='fas fa-venus-mars pai-select-atualizar'>
@@ -182,6 +184,7 @@
                                                     <%}%> 
                               </select>
                               </i>
+                            </div>
                         </div>
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Contato</span></label><br>
@@ -196,25 +199,31 @@
                     <div class="dados-card">
                         <label for="" class="nome-campo-usuario"><span
                                 class="badge badge-pill  label-dados-view">Endereço</span></label><br>
-                        <i class='fas fa-map-marker-alt pai-select-atualizar'>
-                            Lougradoro <input name="logradouro" type="text" class="form-control input-atualizar" id="logradouro"
-                                value="<%=resposta[0].pessoas.logradouro%> "> Nº <input name="numero" type="text"
+                                <div class="endereco">
+                       
+                            <label for=""> <i class='fas fa-map-marker-alt pai-select-atualizar'> Lougradoro  </i></label>
+                            <input name="logradouro" type="text" class="form-control input-atualizar" id="logradouro"
+                                value="<%=resposta[0].pessoas.logradouro%> ">
+                                <label for="" style="text-align: left;"> <i class='fa fa-flag pai-select-atualizar'> Número  </i></label>
+                                <input name="numero" type="text"
                                 class="form-control input-atualizar numero" id="numero"
-                                value=" <%=resposta[0].pessoas.numero%>"> - <input name="bairro" type="text"
+                                value=" <%=resposta[0].pessoas.numero%>">
+                                <label for="" style="text-align: left;"> <i class='fas fa-route pai-select-atualizar'> Bairro  </i></label>
+                                <input name="bairro" type="text"
                                 class="form-control input-atualizar bairro" id="bairro"
-                                value=" <%=resposta[0].pessoas.bairro%>"> </i>
-                        <br> <b class="pai-select-atualizar"> Complemento: <input name="complemento" type="text"
-                                class="form-control input-atualizar" id="complemento"
-                                value=" <%=resposta[0].pessoas.complemento%>"> </b>
-                        <br>
-                        <i class='fas fa-map-signs pai-select-atualizar'>
-                            CEP: <input name="cep" type="text" class="form-control input-atualizar" id="cep"
-                                value=" <%=resposta[0].pessoas.cep%>"></i><br>
-                        <i class='fas fa-map pai-select-atualizar'>
-                            Cidade: <input name="cidade" type="text" class="form-control input-atualizar" id="cidade"
-                                value=" <%=resposta[0].pessoas.cidade%>"> -<input name="uf" type="text"
+                                value=" <%=resposta[0].pessoas.bairro%>"> </div>
+                          <label for=""> <i class='fas fa-house-user pai-select-atualizar'>Complemento</i></label>
+                             <input name="complemento" type="text" class="form-control input-atualizar" id="complemento" value=" <%=resposta[0].pessoas.complemento%>"> 
+                        
+                        <label for=""> <i class='fas fa-map-signs pai-select-atualizar'>CEP</i></label>
+                         <input name="cep" type="text" class="form-control input-atualizar" id="cep"value=" <%=resposta[0].pessoas.cep%>">
+                         <label for=""> <i class='fas fa-map pai-select-atualizar'>Cidade</i></label>
+                       
+                            <input name="cidade" type="text" class="form-control input-atualizar" id="cidade"value=" <%=resposta[0].pessoas.cidade%>">
+                            <label for=""> <i class='fas fa-map pai-select-atualizar'>UF</i></label>
+                            <input name="uf" type="text"
                                 class="form-control input-atualizar numero" id="uf"
-                                value=" <%=resposta[0].pessoas.uf%>"></i>
+                                value=" <%=resposta[0].pessoas.uf%>">
                     </div>
                 </div>
                 <div class="group-button botoes-atualizar">
@@ -229,6 +238,38 @@
     </article>
     </div>
 </main>
+<!-- modal excuir usuário -->
+<div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='far fa-trash-alt'> </i> Excluir Usuário
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-peq-grupo" method="post" action="system/cadastro-usuario"
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                       
+                        <h3 class="col-sm-12">Tem certeza que deseja Excluir?</h3>
+                        
+                        <p class="col-sm-12"><h5>Id: <%=resposta[0].id%></h5></p>
+                        <p class="col-sm-12"><h5>Nome: <%=resposta[0].pessoas.nome%></h5></p>
+                       
+                    <div class="group-button col-sm-12">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit"><i class="far fa-trash-alt"> Excluir</i></button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 <%-include('../partials/footer-system.ejs')%>
 
 
