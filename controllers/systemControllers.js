@@ -44,7 +44,8 @@ const systemControllers = {
       });
     }
     const msgCadastro = req.flash('cadastro')
-    const msgAtualizado = req.flash('atualizado')
+    const msgExcluido = req.flash('deletado')
+ 
    msgCadastro> 0?"usuário cadastrado com sucesso":"";
    console.log( msgCadastro>0?"usuário cadastrado com sucesso":"")
     res.render('./system/menu', {
@@ -52,7 +53,7 @@ const systemControllers = {
       resposta,
       nomeList,
       msgCad:msgCadastro.length>0?true:false,
-      msgAtu:msgAtualizado.length>0?true:false,
+      msgExc:msgExcluido.length>0?true:false,
       token,
       api:API_BASE
      });
@@ -62,6 +63,7 @@ const systemControllers = {
    const token = req.session.token
    //Verifica o usuário dono do token
    const usuario = jwt.verify(token, jwtSecret)
+   const msgAtualizado = req.flash('atualizado')
    try {
     const usuarioView = await fetch(`${API_BASE}/usuario/${req.params.id}`, {
       method: "GET",
@@ -79,6 +81,7 @@ const systemControllers = {
         usuario,
         resposta,
         moment,
+        msgAtu:msgAtualizado.length>0?true:false,
         BrM
       });
    } catch (error) {
@@ -151,8 +154,26 @@ const systemControllers = {
        } catch (error) {
         res.status(400).json(error)
        }
-    
-      
-     }
+       },
+       delete: async (req,res) =>{
+        const token = req.session.token
+
+        try {
+         const usuario = await fetch(`${API_BASE}/usuario`, {
+           method: "delete",
+           body: JSON.stringify(req.params),
+           headers: {
+            'Content-Type': 'application/json',
+             'Authorization': 'Bearer ' + token
+           }
+         })
+         const resposta = await usuario.json()
+         msg = `Usuário ${resposta.email} excluido com sucesso!`
+         req.flash('deletado',msg)
+          res.redirect('/system')
+        } catch (error) {
+         res.status(400).json(error)
+        }
+       }
 }
 module.exports = systemControllers;

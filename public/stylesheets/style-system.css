@@ -574,6 +574,12 @@ margin-left: 10px;
 .bairro{
     /* width: 30%; */
 }
+#botao-excluir{
+    border: none;
+}
+#botao-excluir :hover{
+border: none;
+}
 .endereco{
     display: flex;
     flex-direction: column;

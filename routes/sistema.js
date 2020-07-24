@@ -22,6 +22,7 @@ router.get('/logout',systemControllers.logout)
 router.get('/visualizar-usuario/:id',systemControllers.usuarioView)
 router.post('/cadastro-usuario',upload.any(),systemControllers.cadastroUsuario)
 router.put('/cadastro-usuario/:id',upload.any(),systemControllers.atualizar)
+router.delete('/cadastro-usuario/:id',upload.any(),systemControllers.delete)
 
 
 

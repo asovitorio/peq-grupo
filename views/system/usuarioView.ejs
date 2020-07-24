@@ -42,9 +42,9 @@
                     <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#editar-usuarios" role="tab"
                         aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-edit'
                             style='font-size:15px'> Atualizar</i></a>
-                    <a class="nav-link" id="v-pills-profile-tab"  href="#" role="tab"
-                        aria-controls="v-pills-profile" aria-selected="false"> <i class='far fa-trash-alt'
-                            style='font-size:15px' data-toggle="modal"  data-target="#modal-excluir-usuario"> Excluir </i></a>
+                   <button id="botao-excluir" data-toggle="modal"  data-target="#modal-excluir-usuario"><a class="nav-link" id="v-pills-profile-tab"  role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false"> <i class='far fa-trash-alt'
+                        style='font-size:15px' > Excluir </i></a></button> 
                     <a class="nav-link" href="/system" role="tab" aria-controls="v-pills-messages"
                         aria-selected="false"><i class='fas fa-reply' style='font-size:15px'> Voltar</i></a>
                 </div>
@@ -251,7 +251,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-peq-grupo" method="post" action="system/cadastro-usuario"
+                <form class="form-peq-grupo" method="post" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=DELETE"
                     enctype="multipart/form-data" novalidate>
                     <div class="form-row">
                        
@@ -301,5 +301,27 @@
 image.addEventListener("change",(e)=>{
     i.className = "fas fa-thumbs-up"
 },false)
+
+
+'<% if(msgAtu){%>'
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.success(`Usuário Atualizado com sucesso!`, toastr.options)
+    '<%}%>'
   
 </script>
