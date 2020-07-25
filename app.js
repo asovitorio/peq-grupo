@@ -15,6 +15,7 @@ var flash = require('connect-flash')
 const usuarioApiRouter = require('./routes/apis/usuarioApiRoute')
 const pessoaApiRouter = require('./routes/apis/pessoaApiRoute')
 const loginApiRouter = require('./routes/apis/loginApiRoute')
+const grupoApiRouter = require('./routes/apis/grupoApiRoute')
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/users', usersRouter);
 app.use('/api/v1/usuario',usuarioApiRouter)
 app.use('/api/v1/pessoa',pessoaApiRouter)
 app.use('/api/v1/login',loginApiRouter)
+app.use('/api/v1/grupo',grupoApiRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
