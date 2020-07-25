@@ -285,7 +285,7 @@ div#v-pills-home .row {
     border: 3px solid #75c2db;
     display: flex;
     box-shadow: 0px 4px 8px black;
-
+    height: 275px
 }
 
 .btn-card {
@@ -618,4 +618,8 @@ border: 2px solid var(--color1) ;
     width: 100%;
     margin-bottom: 20px;
     margin-right: 50px;
+}
+
+.grupos{
+    height: auto;
 }

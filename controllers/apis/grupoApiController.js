@@ -60,12 +60,14 @@ const grupoApiController ={
 
     },
     create: async (req,res) =>{
-        const {nome,dia_semana,usuario_id} = req.body
+        const {nome,dia_semana,image,usuario_id} = req.body
         const grupo = {
             nome,
             dia_semana,
+            image,
             usuario_id
         }
+     
         try {
             const result = await sequelize.transaction(async (t) =>{
                 const grupoCreate =await Grupo.findOrCreate({
@@ -105,6 +107,7 @@ const grupoApiController ={
         }
          const grupo = {
             nome:dados.nome,
+            image:dados.image,
             dia_semana:dados.dia_semana,
            }
        try {

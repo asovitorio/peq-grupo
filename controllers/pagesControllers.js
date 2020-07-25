@@ -4,6 +4,7 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 const API_BASE = process.env.API_BASE
 const jwtSecret = process.env.JWT_PASS;
+const BrM = require('br-masks');
 const pagesControllers = {
     index: (_req, res) => {
         const nav = {
@@ -19,18 +20,34 @@ const pagesControllers = {
             nav: nav
         })
     },
-    home: (_req, res) => {
-        const nav = {
+    home: async (req, res) => {
+      
+        const token = req.session.token
+        const listaGrupos = await fetch(`${API_BASE}/grupo`, {
+            method: "GET",
+            //  body: JSON.stringify(req.body),
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token
+            }
+          })
+          const grupos = await listaGrupos.json()
+          const nav = {
             index: "",
             home: "active",
             sobre: "",
             contato: "",
             sistema: "",
             classBody: "gradient",
-            titulo: "Igreja Batista"
+            titulo: "Igreja Batista",
+           
         }
         res.render('home', {
-            nav: nav
+            nav: nav,
+            grupos,
+            BrM
+           
         })
     },
     sobre: (_req, res) => {

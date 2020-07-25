@@ -574,11 +574,14 @@ img.d-blockw-100 {
 #local-peq-grupo {
     display: flex;
     margin-left: 20px;
-    margin-right: 20px;
-    background-color: rgba(0, 0, 0, 0.055);
+    margin-right: 0px;
+    /* background-color: rgba(0, 0, 0, 0.055); */
+    background-image: url('../images/fundo-de-forma-geometrica-gradiente_78532-307.jpg');
     justify-content: center;
-    border-radius: 12px;
-    box-shadow: 0px 0px 8px black;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    /* border-radius: 12px;
+    box-shadow: 0px 0px 8px black; */
 }
 
 #card-local-peq-grupo {
@@ -587,6 +590,7 @@ img.d-blockw-100 {
     border: 3px solid #75c2db;
     display: flex;
     box-shadow: 0px 4px 8px black;
+    height: 255px;
 
 }
 #card-local-peq-login {

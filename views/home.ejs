@@ -2,7 +2,9 @@
 <%-include('./partials/nav.ejs')%>
 
 <main class="teste">
-    <div class="foto-corpo"> <!--<img src="/images/oracao.jpg" alt="" width="70%">--></div> 
+    <div class="foto-corpo">
+        <!--<img src="/images/oracao.jpg" alt="" width="70%">-->
+    </div>
 
     <div class="row">
         <div class="col-sm-6">
@@ -16,8 +18,13 @@
             <div class="">
                 <div class="card-body" id="texto1">
                     <h2>BEM VINDO</h2>
-                    <p>Buscamos ser um povo de fé verdadeira e vibrante que alia espiritualidade, emotividade, racionalidade e prática, afim de podermos agradar a Deus e servir ao próximo. Almejamos ser uma família que, nos momentos alegres, se reúne para festejar e agradecer a Deus e, nos momentos difíceis, se reúne para chorar, transmitir força e buscar a ajuda do Senhor.</p>
-                    <p>Se você é uma pessoa comum que chora nos momentos tristes, faz festa nos momentos alegres e está disposta a amar e receber amor, então seja bem-vindo, a Igreja Batista da Fé também é sua casa..</p>
+                    <p>Buscamos ser um povo de fé verdadeira e vibrante que alia espiritualidade, emotividade,
+                        racionalidade e prática, afim de podermos agradar a Deus e servir ao próximo. Almejamos ser uma
+                        família que, nos momentos alegres, se reúne para festejar e agradecer a Deus e, nos momentos
+                        difíceis, se reúne para chorar, transmitir força e buscar a ajuda do Senhor.</p>
+                    <p>Se você é uma pessoa comum que chora nos momentos tristes, faz festa nos momentos alegres e está
+                        disposta a amar e receber amor, então seja bem-vindo, a Igreja Batista da Fé também é sua casa..
+                    </p>
 
 
                 </div>
@@ -91,101 +98,29 @@
 
         </div>
     </div>
-
     <div class="row" id="local-peq-grupo">
-
-        <div class="col-sm-3">
+        <% grupos.forEach(grupo => { %>
+        <div class="col-sm-3 card-grupo">
             <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/IMG_20180411_111301015~3.jpg" class="card-img"
+                <div id="box-local-peq-grupo"> <img src="/images/profiles/<%=grupo.image%>" class="card-img"
                         id="img-local-peq-grupo" alt="..."></div>
                 <div class="card-body">
-                    <h5 class="card-title">Conexão Desus é Amor</h5>
-                    <p class="card-text"><b>Alessandro Barbosa Vitorio</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
-
+                    <h5 class="card-title"><%=grupo.nome%></h5>
+                    <p class="card-text"><b><%=grupo.usuario.pessoas.nome%></b></p>
+                    <p class="card-text">Fone: <%=BrM.phone(grupo.usuario.pessoas.telefone)%></p>
+                    <p class="card-text">Bairro: <%=grupo.usuario.pessoas.bairro%></p>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/slide2.jpg" class="card-img" id="img-local-peq-grupo"
-                        alt="..."></div>
-                <div class="card-body">
-                    <h5 class="card-title">Conexão da Fé</h5>
-                    <p class="card-text"><b>Sandra & Sandro</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
+        <%  }); %>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/slide1.jpg" class="card-img" id="img-local-peq-grupo"
-                        alt="..."></div>
-                <div class="card-body">
-                    <h5 class="card-title">Conexão da Gloria</h5>
-                    <p class="card-text"><b>Giovan & Miriam</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/slide1.jpg" class="card-img" id="img-local-peq-grupo"
-                        alt="..."></div>
-                <div class="card-body">
-                    <h5 class="card-title">Conexão da Gloria</h5>
-                    <p class="card-text"><b>Giovan & Miriam</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/slide1.jpg" class="card-img" id="img-local-peq-grupo"
-                        alt="..."></div>
-                <div class="card-body">
-                    <h5 class="card-title">Conexão da Gloria</h5>
-                    <p class="card-text"><b>Giovan & Miriam</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/slide1.jpg" class="card-img" id="img-local-peq-grupo"
-                        alt="..."></div>
-                <div class="card-body">
-                    <h5 class="card-title">Conexão da Gloria</h5>
-                    <p class="card-text"><b>Giovan & Miriam</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" id="card-local-peq-grupo">
-                <div id="box-local-peq-grupo"> <img src="/images/slide1.jpg" class="card-img" id="img-local-peq-grupo"
-                        alt="..."></div>
-                <div class="card-body">
-                    <h5 class="card-title">Conexão da Gloria</h5>
-                    <p class="card-text"><b>Giovan & Miriam</b></p>
-                    <p class="card-text">Fone: (11) 95496-5202</p>
-                    <p class="card-text">Bairro: Jd. Ipê</p>
 
-                </div>
-            </div>
-        </div>
+
     </div>
 
-   
-<%-include('./partials/footer.ejs')%>
+
+    <%-include('./partials/footer.ejs')%>
