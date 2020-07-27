@@ -19,6 +19,10 @@ module.exports = {
             type: Sequelize.STRING,
           allowNull: false,
         },
+        image: {
+            type: Sequelize.STRING,
+          allowNull: false,
+        },
        usuario_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
@@ -30,8 +34,8 @@ module.exports = {
           }
         },
         created_at: Sequelize.DATE,
-      updated_at: Sequelize.DATE,
-      deleted_at: Sequelize.DATE,
+        updated_at: Sequelize.DATE,
+        deleted_at: Sequelize.DATE,
       });
       
     

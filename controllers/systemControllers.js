@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const senhaAdm = process.env.USER_PASS;
 const moment = require('moment')
 const BrM = require('br-masks');
+const grupoApiController = require('./apis/grupoApiController');
 
 const systemControllers = {
   index: async (req, res) => {
@@ -25,10 +26,25 @@ const systemControllers = {
         'Authorization': 'Bearer ' + token
       }
     })
-    //resposta da API
+    const listaGrupos = await fetch(`${API_BASE}/grupo`, {
+      method: "GET",
+      //  body: JSON.stringify(req.body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    //resposta da API Usuário
     const resposta = await listaUsuarios.json()
+    //resposta da API Grupos
+    const grupos = await listaGrupos.json()
     const nomeList = [];
-    console.log(Object.keys(resposta)[0])
+
+    // teste de dados
+    // console.log(grupos)
+    // console.log(Object.keys(resposta)[0])
+
     if (Object.keys(resposta)[0] == 'err') {
       const msg = 'Usuario desativado'
       req.flash('nivel', msg)
@@ -55,6 +71,8 @@ const systemControllers = {
       msgCad:msgCadastro.length>0?true:false,
       msgExc:msgExcluido.length>0?true:false,
       token,
+      grupos,
+      BrM,
       api:API_BASE
      });
   },

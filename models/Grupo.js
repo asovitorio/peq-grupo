@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, DataTypes) => {
     const Grupo = sequelize.define("Grupo", {
         id: {
@@ -10,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
           },
           dia_semana: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
+            allowNull: true,
+          },
+          image: {
+            type: DataTypes.STRING,
             allowNull: true,
           },
           usuario_id: {
@@ -20,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     },{
       timestamps: true,
       underscored: true,
-      paranoide:true,
+      paranoid: true,
       tableName: 'grupos'
     });
 
