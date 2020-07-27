@@ -42,8 +42,8 @@ const systemControllers = {
     const nomeList = [];
 
     // teste de dados
-    console.log(grupos)
-    console.log(Object.keys(resposta)[0])
+    // console.log(grupos)
+    // console.log(Object.keys(resposta)[0])
 
     if (Object.keys(resposta)[0] == 'err') {
       const msg = 'Usuario desativado'
