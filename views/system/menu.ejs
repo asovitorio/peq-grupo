@@ -16,10 +16,10 @@
                 </span>
                 <hr>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="" data-toggle="pill" href="#v-pills-home" role="tab"
+                    <a class="nav-link active" id="" data-toggle="pill" href="#usuario" role="tab"
                         aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-user-cog'
                             style='font-size:15px'> Usuários</i></a>
-                    <a class="nav-link" id="menu-peq-grupo" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    <a class="nav-link" id="menu-peq-grupo" data-toggle="pill" href="#pequeno-grupo" role="tab"
                         aria-controls="v-pills-profile" aria-selected="false"><i class='fas fa-users'
                             style='font-size:15px'> P. Grupos</i></a>
                     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
@@ -37,7 +37,7 @@
         </aside>
         <article class="" id="corpo">
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                <div class="tab-pane fade show active" id="usuario" role="tabpanel"
                     aria-labelledby="v-pills-home-tab">
                     <div class="corpo-titulo"><i class='fas fa-user-cog' style='font-size:24px'> Usuários</i></div>
                     <br>
@@ -85,14 +85,14 @@
                     </div>
                 </div>
                 <!-- grupo -->
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="tab-pane fade" id="pequeno-grupo" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <div class="corpo-titulo"><i class='fas fa-users' style='font-size:24px'> P. Grupos</i></div>
                     <br>
                     <div class="row grupos">
                     <% grupos.forEach(grupo => { %>
                     <div class="col-sm-3 card-grupo">
                         <div class="card" id="card-local-peq-grupo">
-                            <div id="box-local-peq-grupo"> <img src="/images/profiles/<%=grupo.image%>"
+                            <div id="box-local-peq-grupo"> <img src="/images/grupo/<%=grupo.image%>"
                                     class="card-img" id="img-local-peq-grupo" alt="..."></div>
                             <div class="card-body">
                                 <h5 class="card-title"><%=grupo.nome%></h5>
@@ -100,7 +100,10 @@
                                 <p class="card-text">Fone: <%=BrM.phone(grupo.usuario.pessoas.telefone)%></p>
                                 <p class="card-text">Bairro:  <%=grupo.usuario.pessoas.bairro%></p>
                             </div>
-                            <a href="#" class="btn btn-primary btn-card">Entrar</a>
+                            <div id="botao-pai"><a href="#" class="btn btn-primary btn-card">Entrar <i class="fas fa-sign-in-alt" style="font-size:15px" aria-hidden="true"></i></a>
+                               <a href="#" class="btn-delete-grupo"><i class="far fa-trash-alt" style="font-size:15px" aria-hidden="true"></i></a> 
+                            </div>
+                            
                         </div>
                     </div>
                     <%  }); %> 
@@ -136,29 +139,46 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-peq-grupo" method="post" action="system/cadastro-usuario"
+                <form class="form-peq-grupo" method="post" action="/system/cadastro-grupo"
                     enctype="multipart/form-data" novalidate>
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label class="label-cadastros" for="validationCustom01">Nome do Pequeno Grupo</label>
                             <input type="text" class="form-control" id="validationCustom01"
-                                placeholder="Digite o nome Pequeno Grupo" name="peq-grupo" value="" required>
+                                placeholder="Digite o nome Pequeno Grupo" name="nome" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Anfitrião</label>
+                            <input type="text" class="form-control" id="usuario" list="usuario-list"
+                                placeholder="Digite um usuário" name="usuario_id" value="" required>
+                            <datalist id="usuario-list">
+                                <%resposta.forEach(element=>{%>
+                                   <option value="id: <%=element.id%> - nome: <%=element.pessoas.nome%>"></option>
+                                <% }) %>     
+                            </datalist>
+
                             <div class="valid-feedback">
                                 Bom!
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="label-cadastros" for="validationCustom02">Anfitrião</label>
-                            <input type="text" class="form-control" id="usuario" list="usuario-list"
-                                placeholder="Digite um usuário" name="anfitriao" value="" required>
-                            <datalist id="usuario-list">
-                                <%for (let index = 0; index < nomeList.length; index++){%>
-                                <option value="<%= nomeList[index] %> "></option>
-                                <% } %>
-                            </datalist>
-
-                            <div class="valid-feedback">
-                                Bom!
+                            <label class="label-cadastros" for="validationCustomUsername">Dia da Semana</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class='fas fa-calendar-check'></i></span>
+                                </div>
+                                <select  class="form-control" id="semana" placeholder="Username" name="dia_semana"
+                                    aria-describedby="inputGroupPrepend">
+                                <option value="Segunda-Feira">Segunda-Feira</option>
+                                <option value="Terça-Feira">Terça-Feira</option>
+                                <option value="Quarta-Feira">Quarta-Feira</option>
+                                <option value="Quinta-Feira">Quinta-Feira</option>
+                                <option value="Sexta-Feira">Sexta-Feira</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -359,7 +379,7 @@
 </div>
 <%-include('../partials/footer-system.ejs')%>
 <script>
-    console.log('<%=msgCad%>')
+    console.log('<%=msgGrupAdd%>')
     '<% if( msgCad){%>'
     toastr.options = {
         "closeButton": false,
@@ -379,6 +399,26 @@
         "hideMethod": "fadeOut"
     }
     toastr.success(`Usuário cadastrado com sucesso!`, toastr.options)
+    '<%}%>'
+    '<% if( msgGrupAdd){%>'
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.success(`Pequeno Grupo cadastrado com sucesso!`, toastr.options)
     '<%}%>'
     '<% if(msgExc){%>'
     toastr.options = {
@@ -491,6 +531,8 @@
         uf.value = teste.uf
         numero.focus()
     })
+
+   
 </script>
 
 

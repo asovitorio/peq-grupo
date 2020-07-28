@@ -8,6 +8,7 @@ const twtSecret = process.env.JWT_PASS
 const url = process.env.URL_SENHA 
 const textoEmails = require('../../helpers/textoEmail');
 const { senha } = require('../pagesControllers');
+const { query } = require('express');
 const usuarioApiController = {
     index: async (req,res) =>{
    if(Object.keys(req.params).length === 0 && Object.keys(req.query).length===0){
@@ -47,7 +48,7 @@ const usuarioApiController = {
    }else{
     const fieldName = Object.keys(req.query)[0]
     const queryValue = req.query[fieldName]
-
+      console.log(fieldName)
     try {
        const usuarios = await Usuario.findAll({
         attributes:[

@@ -278,7 +278,9 @@ div#v-pills-home .row {
     border-radius: 12px;
     box-shadow: 0px 0px 8px black;
 }
-
+.card-title{
+    font-size: unset;
+}
 #card-local-peq-grupo {
     margin-top: 70px;
     margin-bottom: 20px;
@@ -287,17 +289,38 @@ div#v-pills-home .row {
     box-shadow: 0px 4px 8px black;
     height: 275px
 }
-
+#botao-pai{
+   display: flex;
+   text-align: center;
+   padding: 10px;
+   align-items: center;
+  
+   justify-content: space-around;
+  
+}
+.btn-delete-grupo i{
+color: var(--color2);
+padding: 8px;
+border-radius:30px ;
+}
+.btn-delete-grupo i:hover{
+color: white;
+background-color: var(--color2);
+padding: 8px;
+border-radius:30px ;
+box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.479);
+transition:all .5s linear;
+}
 .btn-card {
     background-color: #75c2db;
     border: none;
-    margin: 15px;
+  
 }
+
 
 .btn-card:hover {
     background-color: var(--color2);
     border: none;
-    margin: 15px;
     transition: all .5s linear;
 }
 
@@ -346,6 +369,7 @@ div#v-pills-home .row {
     padding: 10px;
     font-size: 20px;
     color: white;
+
 }
 
 

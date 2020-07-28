@@ -1,14 +1,12 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const jwtSecret = process.env.JWT_PASS;
 const fetch = require('node-fetch');
-const API_BASE = process.env.API_BASE
 require('dotenv').config()
+const API_BASE = process.env.API_BASE
 const bcrypt = require('bcrypt');
 const senhaAdm = process.env.USER_PASS;
 const moment = require('moment')
 const BrM = require('br-masks');
-const grupoApiController = require('./apis/grupoApiController');
 
 const systemControllers = {
   index: async (req, res) => {
@@ -61,15 +59,19 @@ const systemControllers = {
     }
     const msgCadastro = req.flash('cadastro')
     const msgExcluido = req.flash('deletado')
+    const msgGrupoCreate =  req.flash('grupoCreate')
  
    msgCadastro> 0?"usuário cadastrado com sucesso":"";
-   console.log( msgCadastro>0?"usuário cadastrado com sucesso":"")
+   console.log( msgGrupoCreate>0?"Grupo cadastrado com sucesso":"")
+
+  // res.send(grupos[0].usuario.pessoas.nome)
     res.render('./system/menu', {
       usuario,
       resposta,
       nomeList,
       msgCad:msgCadastro.length>0?true:false,
       msgExc:msgExcluido.length>0?true:false,
+      msgGrupAdd:msgGrupoCreate.length>0?true:false,
       token,
       grupos,
       BrM,
