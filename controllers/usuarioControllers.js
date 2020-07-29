@@ -59,6 +59,7 @@ const systemControllers = {
     }
     const msgCadastro = req.flash('cadastro')
     const msgExcluido = req.flash('deletado')
+    const msgExcluidoGrupo =  req.flash('deletadoGupo')
     const msgGrupoCreate =  req.flash('grupoCreate')
  
    msgCadastro> 0?"usuário cadastrado com sucesso":"";
@@ -71,6 +72,7 @@ const systemControllers = {
       nomeList,
       msgCad:msgCadastro.length>0?true:false,
       msgExc:msgExcluido.length>0?true:false,
+      msgExcGrupo:msgExcluidoGrupo.length>0?true:false,
       msgGrupAdd:msgGrupoCreate.length>0?true:false,
       token,
       grupos,

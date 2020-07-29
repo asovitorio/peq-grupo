@@ -48,7 +48,9 @@ router.post('/cadastro-usuario',upload.any(),usuarioControllers.cadastroUsuario)
 router.put('/cadastro-usuario/:id',upload.any(),usuarioControllers.atualizar)
 router.delete('/cadastro-usuario/:id',upload.any(),usuarioControllers.delete)
 //########## Pequeno Grupos ###########
-router.post('/cadastro-grupo',uploadGrupo.any(),grupoControllers.create)
+router.post('/pequeno-grupo',uploadGrupo.any(),grupoControllers.create)
+router.delete('/pequeno-grupo/:id',grupoControllers.delete)
+
 
 
 module.exports = router;

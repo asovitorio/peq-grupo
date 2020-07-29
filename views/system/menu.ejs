@@ -101,21 +101,17 @@
                                 <p class="card-text">Bairro:  <%=grupo.usuario.pessoas.bairro%></p>
                             </div>
                             <div id="botao-pai"><a href="#" class="btn btn-primary btn-card">Entrar <i class="fas fa-sign-in-alt" style="font-size:15px" aria-hidden="true"></i></a>
-                               <a href="#" class="btn-delete-grupo"><i class="far fa-trash-alt" style="font-size:15px" aria-hidden="true"></i></a> 
+                            <button data-toggle="modal"  data-target="#modal-excluir-usuario" id="botao-excluir">   <a href="#" grupo = "<%=grupo.nome%>" grupoId ="<%=grupo.id%>"    class="btn-delete-grupo"><i class="far fa-trash-alt" style="font-size:15px" aria-hidden="true"></i></a> </button> 
                             </div>
-                            
                         </div>
                     </div>
                     <%  }); %> 
                     </div>
                 </div>
-              
                 <!-- relat -->
-
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                     <div class="corpo-titulo"><i class='fas fa-pray' style='font-size:24px'> Relatorio</i></div>
                     <br>
-
                 </div>
                 <!-- lição -->
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
@@ -216,7 +212,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-usuario" id="form-usuario" action="system/cadastro-usuario" method="POST"
+                <form class="form-usuario" id="form-usuario" action="system/pequeno-grupo" method="POST"
                     enctype="multipart/form-data" novalidate>
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
@@ -377,6 +373,35 @@
         </div>
     </div>
 </div>
+
+<!-- modal excuir Grupo -->
+<div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='far fa-trash-alt'> </i> Excluir Pequeno Grupo
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-peq-grupo" id="form-excluir" method="post" action=""
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                        <h3 class="col-sm-12">Tem certeza que deseja Excluir?</h3>
+                        <p class="col-sm-12"><h5 id="idGrupo"></h5></p>
+                        <p class="col-sm-12"><h5 id="nomeGrupo"></h5></p>
+                    <div class="group-button col-sm-12">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit"><i class="far fa-trash-alt"> Excluir</i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <%-include('../partials/footer-system.ejs')%>
 <script>
     console.log('<%=msgGrupAdd%>')
@@ -439,6 +464,26 @@
         "hideMethod": "fadeOut"
     }
     toastr.success(`Usuário Excluido com sucesso!`, toastr.options)
+    '<%}%>'
+    '<% if(msgExcGrupo){%>'
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.success(`Pequeno Grupo Excluido com sucesso!`, toastr.options)
     '<%}%>'
 </script>
 <script>
@@ -532,7 +577,23 @@
         numero.focus()
     })
 
-   
+   const grupoExcluir = document.getElementsByClassName("btn-delete-grupo");
+   const idGrupo = document.getElementById('idGrupo');
+   const nomeGrupo = document.getElementById('nomeGrupo');
+   const form = document.getElementById('form-excluir');
+
+    for (let index = 0; index <grupoExcluir.length; index++) {
+        
+        grupoExcluir[index].addEventListener('click',(e)=>{
+            //  grupoExcluir[index].getAttribute('grupo')
+            form.action = `/system/pequeno-grupo/${grupoExcluir[index].getAttribute('grupoId')}?_method=DELETE`
+            nomeGrupo.innerText = `Pequeno Grupo: ${grupoExcluir[index].getAttribute('grupo')}`
+            idGrupo.innerText = `id: ${grupoExcluir[index].getAttribute('grupoId')}`
+        })
+      
+        
+    }
+  
 </script>
 
 

@@ -294,9 +294,12 @@ div#v-pills-home .row {
    text-align: center;
    padding: 10px;
    align-items: center;
-  
    justify-content: space-around;
-  
+}
+#botao-pai button{
+    border: none;
+  background-color: white;
+ 
 }
 .btn-delete-grupo i{
 color: var(--color2);
@@ -316,7 +319,6 @@ transition:all .5s linear;
     border: none;
   
 }
-
 
 .btn-card:hover {
     background-color: var(--color2);

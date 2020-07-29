@@ -49,6 +49,31 @@ const systemControllers = {
     }
    
   },
+  update:(req,res)=>{
 
-}
+  },
+  delete:async (req,res)=>{
+    const token = req.session.token
+
+    try {
+     const usuario = await fetch(`${API_BASE}/grupo`, {
+       method: "delete",
+       body: JSON.stringify(req.params),
+       headers: {
+        'Content-Type': 'application/json',
+         'Authorization': 'Bearer ' + token
+       }
+     })
+     const resposta = await usuario.json()
+     msg = `Usuário ${resposta.email} excluido com sucesso!`
+     req.flash('deletadoGupo',msg)
+      res.redirect('/system')
+    } catch (error) {
+     res.status(400).json(error)
+    }
+   }
+  
+  }
+
+
 module.exports = systemControllers;
