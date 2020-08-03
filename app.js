@@ -36,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // ######### Rotas do Sistema ############
 app.use('/', indexRouter);
 app.use('/system',sistemaRouter);
