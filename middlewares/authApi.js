@@ -29,9 +29,6 @@ const authApi = {
                 err: "Token invalido!"
             });
         }
-
-
-
     }
 }
 module.exports = authApi

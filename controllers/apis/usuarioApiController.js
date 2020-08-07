@@ -74,6 +74,8 @@ const usuarioApiController = {
     let {nome,data_nascimento,sexo,telefone,image,cep,logradouro,numero,complemento,bairro,cidade,uf,email,senha,status} = req.body
     let pessoa = {nome,data_nascimento,sexo,telefone,image,cep,logradouro,numero,complemento,bairro,cidade,uf}
     const senhaHash = bcrypt.hashSync(senha,10)
+
+        
           try {
             const result = await sequelize.transaction(async (t) =>{
                 const pessoaCadastro =await Pessoa.findOrCreate({
@@ -102,6 +104,7 @@ const usuarioApiController = {
                       }
                       return pessoaUsuario;
          })
+         
         
          try {
            const token = await jwt.sign({id:result.usuarioCadastro[0].id,email:result.usuarioCadastro[0].email,status:result.usuarioCadastro[0].status},twtSecret,{expiresIn:"10d"})

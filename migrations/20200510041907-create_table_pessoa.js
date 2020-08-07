@@ -58,11 +58,9 @@ module.exports = {
         allowNull: true,
       },
       uf: {
-
         type: Sequelize.STRING,
         allowNull: true,
       },
-      
       created_at: Sequelize.DATE,
       updated_at: Sequelize.DATE,
       deleted_at: Sequelize.DATE,
@@ -71,8 +69,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-
-
     return queryInterface.dropTable('pessoas');
 
   }
