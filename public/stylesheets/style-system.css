@@ -236,7 +236,7 @@ background-color: white;
 
 #v-pills-tabContent {
     width: inherit;
-    height: 100%;
+    height: 100vh;
 }
 
 div#v-pills-home .row {
