@@ -9,7 +9,6 @@
                 <div id="foto-profile"><img src="/images/profiles/<%=usuario.avatar %>" alt="foto de perfil"
                         class="img-thumbnail">
                 </div>
-
                 <label class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> 
                         <%if(usuario.status==1){%>
                             <span class="badge badge-secondary" style="padding: 2px;">Status
@@ -17,23 +16,19 @@
                                     ADM</label>
                         </span>
                         </span>
-
                         <%}else if(usuario.status==2){%>
                             <span class="badge badge-info" style="padding: 2px;">Status
                                 <span class="badge badge-light">
                                     USER</label>
                         </span>
                         </span>
-
                         <%}else{%>
                             <span class="badge badge-danger" style="padding: 2px;">Status
                                 <span class="badge badge-light">
                                     INAT</label>
                         </span>
                         </span>
-
                         <%}%>    
-                       
                 <hr>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active " id="v-pills-home-tab" data-toggle="pill" href="#usuarioView" role="tab"
@@ -49,7 +44,6 @@
                         aria-selected="false"><i class='fas fa-reply' style='font-size:15px'> Voltar</i></a>
                 </div>
             </nav>
-           
         </aside>
         <article class="" id="corpo">
             <div class="tab-content" id="v-pills-tabContent">
