@@ -251,37 +251,7 @@
     </div>
 </div>
 <!-- modal excuir usuário -->
-<div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><i class='far fa-trash-alt'> </i> Excluir Usuário
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form class="form-peq-grupo" method="post" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=DELETE"
-                    enctype="multipart/form-data" novalidate>
-                    <div class="form-row">
-                       
-                        <h3 class="col-sm-12">Tem certeza que deseja Excluir?</h3>
-                        
-                        <p class="col-sm-12"><h5>Id: <%=resposta[0].id%></h5></p>
-                        <p class="col-sm-12"><h5>Nome: <%=resposta[0].pessoas.nome%></h5></p>
-                       
-                    <div class="group-button col-sm-12">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button class="btn btn-info" type="submit"><i class="far fa-trash-alt"> Excluir</i></button>
-                    </div>
-                </form>
 
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- ################### modal excuir Grupo ####################################################################-->
 <div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
