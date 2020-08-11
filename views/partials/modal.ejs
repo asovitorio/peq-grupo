@@ -1,0 +1,283 @@
+
+<!-- modal pequeno grupo -->
+<div class="modal fade" id="modal-add-peq-grupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-users'><b>+</b></i> Cadastro de P. Grupo
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-peq-grupo" method="post" action="/system/pequeno-grupo"
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Nome do Pequeno Grupo</label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Digite o nome Pequeno Grupo" name="nome" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Anfitrião</label>
+                            <input type="text" class="form-control" id="usuario" list="usuario-list"
+                                placeholder="Digite um usuário" name="usuario_id" value="" required>
+                            <datalist id="usuario-list">
+                                <%resposta.forEach(element=>{%>
+                                   <option value="id: <%=element.id%> - nome: <%=element.pessoas.nome%>"></option>
+                                <% }) %>     
+                            </datalist>
+
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustomUsername">Dia da Semana</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class='fas fa-calendar-check'></i></span>
+                                </div>
+                                <select  class="form-control" id="semana" placeholder="Username" name="dia_semana"
+                                    aria-describedby="inputGroupPrepend">
+                                <option value="Segunda-Feira">Segunda-Feira</option>
+                                <option value="Terça-Feira">Terça-Feira</option>
+                                <option value="Quarta-Feira">Quarta-Feira</option>
+                                <option value="Quinta-Feira">Quinta-Feira</option>
+                                <option value="Sexta-Feira">Sexta-Feira</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustomUsername">Imagem</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class='fas fa-image'></i></span>
+                                </div>
+                                <input type="file" class="form-control" id="image" placeholder="Username" name="image"
+                                    aria-describedby="inputGroupPrepend">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-button">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit">Salvar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--############################ modal usuario ############################################################################### -->
+<div class="modal fade" id="modal-add-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-user-plus'></i> Cadastro de Usuário
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-usuario" id="form-usuario" action="system/cadastro-usuario" method="POST"
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Nome</label>
+                            <input type="text" list="usuario-list1" class="form-control" id="nomeUsu" name="nome"
+                                placeholder="Digite o nome completo" value="" required>
+                            <datalist id="usuario-list1">
+                                <%for (let index = 0; index < nomeList.length; index++){%>
+                                <option value="<%= nomeList[index] %> "></option>
+                                <% }%>
+                            </datalist>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="nascimento" name="data_nascimento"
+                                placeholder="Data de nascimento" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite uma data!
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Sexo</label>
+                            <select class="custom-select" id="sexo" name="sexo" required>
+                                <option value="">Escolha o sexo</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                            </select>
+                            <div class="invalid-feedback">Escolha uma opção</div>
+                            <div class="valid-feedback">Bom!</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustomUsername">Imagem</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class='fas fa-image'></i></span>
+                                </div>
+                                <input type="file" class="form-control" name="image" id="image" placeholder="image"
+                                    aria-describedby="inputGroupPrepend">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone"
+                                placeholder="Digite um telefone" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Digite um email" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom02">Status</label>
+                            <select class="custom-select" id="status" name="status" required>
+                                <option value="">Nível de acesso</option>
+                                <option value="1">ADM</option>
+                                <option value="2">USER</option>
+                                <option value="3">INATIVO</option>
+                            </select>
+                            <div class="invalid-feedback">Escolha uma opção</div>
+                            <div class="valid-feedback">Bom!</div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">CEP</label>
+                            <input type="text" class="form-control" id="cep" name="cep" placeholder="Ex: 05797440"
+                                value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um CEP valido!
+                            </div>
+                        </div>
+                        <div class="col-md-7 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Logradouro</label>
+                            <input type="text" class="form-control" id="logradouro" name="logradouro"
+                                placeholder="Ex: Rua Silvio Gallicho" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um lougradouro!
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Nº</label>
+                            <input type="text" class="form-control" id="numero" name="numero"
+                                placeholder="Nº. Residência" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um Número ou S/N!
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Complemento</label>
+                            <input type="text" class="form-control" id="complemento" name="complemento"
+                                placeholder="Ex: Bl 5 - Ap 203" value="">
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Bairro</label>
+                            <input type="text" class="form-control" id="bairro" name="bairro"
+                                placeholder="Digite o Bairro" value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um Bairro!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">Cidade</label>
+                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex:São Paulo"
+                                value="" required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite uma Cidade!
+                            </div>
+                        </div>
+                        <div class="col-md-1 mb-3">
+                            <label class="label-cadastros" for="validationCustom01">UF</label>
+                            <input type="text" class="form-control" id="uf" name="uf" placeholder="UF" value=""
+                                required>
+                            <div class="valid-feedback">
+                                Bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Digite um UF!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-button">
+                        <button type="button" id="fechar-modal" class="btn btn-secondary"
+                            data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal excuir usuário -->
+
+
+<!-- ################### modal excuir Grupo ####################################################################-->
+<div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class='far fa-trash-alt'> </i> Excluir Pequeno Grupo
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-peq-grupo" id="form-excluir" method="post" action=""
+                    enctype="multipart/form-data" novalidate>
+                    <div class="form-row">
+                        <h3 class="col-sm-12">Tem certeza que deseja Excluir?</h3>
+                        <p class="col-sm-12"><h5 id="idGrupo"></h5></p>
+                        <p class="col-sm-12"><h5 id="nomeGrupo"></h5></p>
+                    <div class="group-button col-sm-12">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button class="btn btn-info" type="submit"><i class="far fa-trash-alt"> Excluir</i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
