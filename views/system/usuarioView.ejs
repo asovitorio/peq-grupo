@@ -1,25 +1,24 @@
 <%-include('../partials/head-system.ejs')%>
-<main class="contaner">
-    <label for="menu-sanduiche" id="label-sanduiche"> <i class="fas fa-bars"></i></label>
-    <div class="main">
-        <input type="checkbox" id="menu-sanduiche">
-        <aside class="" id="menu">
+    <main class="contaner">
+        <label for="menu-sanduiche" id="label-sanduiche"> <i class="fas fa-bars"></i></label>
+        <div class="main">
+            <input type="checkbox" id="menu-sanduiche">
+            <aside class="" id="menu">
 
-            <nav id="painel-btn">
-                <div id="foto-profile"><img src="/images/profiles/<%=usuario.avatar %>" alt="foto de perfil"
-                        class="img-thumbnail">
-                </div>
+                <nav id="painel-btn">
+                    <div id="foto-profile"><img src="/images/profiles/<%=usuario.avatar %>" alt="foto de perfil" class="img-thumbnail">
+                    </div>
 
-                <label class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> 
+                    <label class="perfil-usuario" for=""><b> <%=usuario.nome %></b><br> 
                         <%if(usuario.status==1){%>
                             <span class="badge badge-secondary" style="padding: 2px;">Status
                                 <span class="badge badge-light">
                                     ADM</label>
-                        </span>
-                        </span>
+                    </span>
+                    </span>
 
-                        <%}else if(usuario.status==2){%>
-                            <span class="badge badge-info" style="padding: 2px;">Status
+                    <%}else if(usuario.status==2){%>
+                        <span class="badge badge-info" style="padding: 2px;">Status
                                 <span class="badge badge-light">
                                     USER</label>
                         </span>
@@ -30,45 +29,38 @@
                                 <span class="badge badge-light">
                                     INAT</label>
                         </span>
-                        </span>
+                            </span>
 
-                        <%}%>    
-                       
-                <hr>
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active " id="v-pills-home-tab" data-toggle="pill" href="#usuarioView" role="tab"
-                        aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-user'
-                            style='font-size:15px'> Usuário</i></a>
-                    <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#editar-usuarios" role="tab"
-                        aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-edit'
-                            style='font-size:15px'> Atualizar</i></a>
-                   <button id="botao-excluir" data-toggle="modal"  data-target="#modal-excluir-usuario"><a class="nav-link" id="v-pills-profile-tab"  role="tab"
+                            <%}%>
+
+                                <hr>
+                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active " id="v-pills-home-tab" data-toggle="pill" href="#usuarioView" role="tab" aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-user' style='font-size:15px'> Usuário</i></a>
+                                    <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#editar-usuarios" role="tab" aria-controls="v-pills-home" aria-selected="true"> <i class='fas fa-edit' style='font-size:15px'> Atualizar</i></a>
+                                    <button id="botao-excluir" data-toggle="modal" data-target="#modal-excluir-usuario"><a class="nav-link" id="v-pills-profile-tab"  role="tab"
                     aria-controls="v-pills-profile" aria-selected="false"> <i class='far fa-trash-alt'
-                        style='font-size:15px' > Excluir </i></a></button> 
-                    <a class="nav-link" href="/system" role="tab" aria-controls="v-pills-messages"
-                        aria-selected="false"><i class='fas fa-reply' style='font-size:15px'> Voltar</i></a>
-                </div>
-            </nav>
-           
-        </aside>
-        <article class="" id="corpo">
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active usuario-cabecalho" id="usuarioView" role="tabpanel"
-                    aria-labelledby="v-pills-home-tab">
-                    <div class="">
-                        <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>"
-                                alt="..." class="img-thumbnail">
-                        </div>
-                        <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
+                        style='font-size:15px' > Excluir </i></a></button>
+                                    <a class="nav-link" href="/system" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class='fas fa-reply' style='font-size:15px'> Voltar</i></a>
+                                </div>
+                </nav>
+
+            </aside>
+            <article class="" id="corpo">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active usuario-cabecalho" id="usuarioView" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="">
+                            <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image %>" alt="..." class="img-thumbnail">
+                            </div>
+                            <label id="nome-usuario-view" class="perfil-usuario" for=""><b>
                                 <%=resposta[0].pessoas.nome %></b><br> 
                                 <%if(resposta[0].status==1){%>
                                     <span class="badge badge-secondary" style="padding: 2px;">Status
                                         <span class="badge badge-light">
                                             ADM</label>
-                                </span>
-                                </span>
-                                <%}else if(resposta[0].status==2){%>
-                                    <span class="badge badge-info" style="padding: 2px;">Status
+                            </span>
+                            </span>
+                            <%}else if(resposta[0].status==2){%>
+                                <span class="badge badge-info" style="padding: 2px;">Status
                                         <span class="badge badge-light">
                                             USER</label>
                                 </span>
@@ -78,65 +70,62 @@
                                         <span class="badge badge-light">
                                             INAT</label>
                                 </span>
-                                </span>
-                                <%}%>    
-                    </div>
-                    <div class="row usuario-view-main">
-                        <div class="dados-usuario">
-                            <div class="dados-card">
-                                <label for="" class="nome-campo-usuario"><span
+                                    </span>
+                                    <%}%>
+                        </div>
+                        <div class="row usuario-view-main">
+                            <div class="dados-usuario">
+                                <div class="dados-card">
+                                    <label for="" class="nome-campo-usuario"><span
                                         class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
-                                <i class='fas fa-calendar-alt'>
+                                    <i class='fas fa-calendar-alt'>
                                     Nascimento:
                                     <%=moment(resposta[0].pessoas.data_nascimento).format("DD/MM/YYYY")%></i>
-                                <br>
-                                <i class='fas fa-venus-mars'>
+                                    <br>
+                                    <i class='fas fa-venus-mars'>
                                     Sexo: <%=resposta[0].pessoas.sexo%></i>
-                            </div>
-                            <div class="dados-card">
-                                <label for="" class="nome-campo-usuario"><span
+                                </div>
+                                <div class="dados-card">
+                                    <label for="" class="nome-campo-usuario"><span
                                         class="badge badge-pill  label-dados-view">Contato</span></label><br>
-                                <i class='fas fa-at'>
+                                    <i class='fas fa-at'>
                                     Email: <%=resposta[0].email%></i>
-                                <br>
-                                <i class='fas fa-phone'>
+                                    <br>
+                                    <i class='fas fa-phone'>
                                     Telefone: <%=BrM.phone(resposta[0].pessoas.telefone)%></i>
-                            </div>
-                            <div class="dados-card">
-                                <label for="" class="nome-campo-usuario"><span
+                                </div>
+                                <div class="dados-card">
+                                    <label for="" class="nome-campo-usuario"><span
                                         class="badge badge-pill  label-dados-view">Endereço</span></label><br>
-                                <i class='fas fa-map-marker-alt'>
+                                    <i class='fas fa-map-marker-alt'>
                                     <%=resposta[0].pessoas.logradouro%> Nº <%=resposta[0].pessoas.numero%> -
                                     <%=resposta[0].pessoas.bairro%></i>
-                                <%if(resposta[0].pessoas.complemento!=""){%>
-                                <br> <b> Complemento: <%=resposta[0].pessoas.complemento%></b>
-                                <%}%><br>
-                           <i class='fas fa-map-signs'>
+                                    <%if(resposta[0].pessoas.complemento!=""){%>
+                                        <br> <b> Complemento: <%=resposta[0].pessoas.complemento%></b>
+                                        <%}%><br>
+                                            <i class='fas fa-map-signs'>
                               CEP: <%=resposta[0].pessoas.cep%></i><br>
-                                <i class='fas fa-map'>
+                                            <i class='fas fa-map'>
                                     Cidade: <%=resposta[0].pessoas.cidade%> - <%=resposta[0].pessoas.uf%></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--Formulário de atuallização -->
-                <div class="tab-pane fade usuario-cabecalho" id="editar-usuarios" role="tabpanel"
-                    aria-labelledby="v-pills-messages-tab">
-                    <div class="">
-                        <form class="" method="POST" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=PUT" enctype="multipart/form-data">
-                            <input type="hidden" name="image" value="<%=resposta[0].pessoas.image%>">
-                         
-                            <div  id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image%>"
-                                    alt="foto  do perfil" class="img-thumbnail">
+                    <!--Formulário de atuallização -->
+                    <div class="tab-pane fade usuario-cabecalho" id="editar-usuarios" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="">
+                            <form class="" method="POST" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=PUT" enctype="multipart/form-data">
+                                <input type="hidden" name="image" value="<%=resposta[0].pessoas.image%>">
+
+                                <div id="foto-profile-view"><img src="/images/profiles/<%=resposta[0].pessoas.image%>" alt="foto  do perfil" class="img-thumbnail">
                                     <div class="div-image">
-                                    <label for="edit-image-usuario" class="icone-edit-image"><i id="camera" class="fas fa-camera"></i>
+                                        <label for="edit-image-usuario" class="icone-edit-image"><i id="camera" class="fas fa-camera"></i>
                                     <input name="image" type="file" id="edit-image-usuario" >
                                     </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar "
-                                    id="inputEmail3" value="<%=resposta[0].pessoas.nome %>" name="nome" > </div>
-                            <label id="nome-usuario-view" class="perfil-usuario" for="">
+                                <div id="div-nome-atualizar"><input type="text" class="form-control input-usuario-atualizar " id="inputEmail3" value="<%=resposta[0].pessoas.nome %>" name="nome"> </div>
+                                <label id="nome-usuario-view" class="perfil-usuario" for="">
                                 <%if(resposta[0].status==1){%>
                                     <span class="badge badge-secondary" style="padding: 2px;">Status
                                         <span class="badge badge-light">
@@ -169,11 +158,11 @@
                         <div class="dados-usuario">
                             <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Dados pessoais</span></label><br>
-                          <div class="col-md-12 mb-3">
-                            <i class='fas fa-calendar-alt pai-select-atualizar'>
+                                <div class="col-md-12 mb-3">
+                                    <i class='fas fa-calendar-alt pai-select-atualizar'>
                            Nascimento:<input name="data_nascimento" class="select-dados-atualizar" type="date" class="form-control input-usuario-atualizar" id="inputEmail3" value="<%=resposta[0].pessoas.data_nascimento.slice(0,10)%>"></i>
-                                            <br>
-                                            <i class='fas fa-venus-mars pai-select-atualizar'>
+                                    <br>
+                                    <i class='fas fa-venus-mars pai-select-atualizar'>
                                                 Sexo: <select name="sexo" class="select-dados-atualizar">
                                                     <% if(resposta[0].pessoas.sexo=="Masculino"){%>
                                                     <option value="Masculino">Masculino</option>
@@ -184,144 +173,141 @@
                                                     <%}%> 
                               </select>
                               </i>
-                            </div>
+                                </div>
                         </div>
-                            <div class="dados-card">
+                        <div class="dados-card">
                             <label for="" class="nome-campo-usuario"><span class="badge badge-pill  label-dados-view">Contato</span></label><br>
-                          <i class='fas fa-at  pai-select-atualizar'>
+                            <i class='fas fa-at  pai-select-atualizar'>
                              Email:  <input name="email" type="email" class="form-control input-atualizar" id="inputEmail3" value="<%=resposta[0].email%>"></i>
-                                            <br>
-                                            <i class='fas fa-phone pai-select-atualizar'>
+                            <br>
+                            <i class='fas fa-phone pai-select-atualizar'>
                                                 Telefone: <input name="telefone" type="tel" class="form-control input-atualizar"
                                                     id="inputEmail3" value="<%=resposta[0].pessoas.telefone%>" required>
                                             </i>
-                    </div>
-                    <div class="dados-card">
-                        <label for="" class="nome-campo-usuario"><span
+                        </div>
+                        <div class="dados-card">
+                            <label for="" class="nome-campo-usuario"><span
                                 class="badge badge-pill  label-dados-view">Endereço</span></label><br>
-                                <div class="endereco">
-                       
-                            <label for=""> <i class='fas fa-map-marker-alt pai-select-atualizar'> Lougradoro  </i></label>
-                            <input name="logradouro" type="text" class="form-control input-atualizar" id="logradouro"
-                                value="<%=resposta[0].pessoas.logradouro%> ">
+                            <div class="endereco">
+
+                                <label for=""> <i class='fas fa-map-marker-alt pai-select-atualizar'> Lougradoro  </i></label>
+                                <input name="logradouro" type="text" class="form-control input-atualizar" id="logradouro" value="<%=resposta[0].pessoas.logradouro%> ">
                                 <label for="" style="text-align: left;"> <i class='fa fa-flag pai-select-atualizar'> Número  </i></label>
-                                <input name="numero" type="text"
-                                class="form-control input-atualizar numero" id="numero"
-                                value=" <%=resposta[0].pessoas.numero%>">
+                                <input name="numero" type="text" class="form-control input-atualizar numero" id="numero" value=" <%=resposta[0].pessoas.numero%>">
                                 <label for="" style="text-align: left;"> <i class='fas fa-route pai-select-atualizar'> Bairro  </i></label>
-                                <input name="bairro" type="text"
-                                class="form-control input-atualizar bairro" id="bairro"
-                                value=" <%=resposta[0].pessoas.bairro%>"> </div>
-                          <label for=""> <i class='fas fa-house-user pai-select-atualizar'>Complemento</i></label>
-                             <input name="complemento" type="text" class="form-control input-atualizar" id="complemento" value=" <%=resposta[0].pessoas.complemento%>"> 
-                        
-                        <label for=""> <i class='fas fa-map-signs pai-select-atualizar'>CEP</i></label>
-                         <input name="cep" type="text" class="form-control input-atualizar" id="cep"value=" <%=resposta[0].pessoas.cep%>">
-                         <label for=""> <i class='fas fa-map pai-select-atualizar'>Cidade</i></label>
-                       
-                            <input name="cidade" type="text" class="form-control input-atualizar" id="cidade"value=" <%=resposta[0].pessoas.cidade%>">
+                                <input name="bairro" type="text" class="form-control input-atualizar bairro" id="bairro" value=" <%=resposta[0].pessoas.bairro%>"> </div>
+                            <label for=""> <i class='fas fa-house-user pai-select-atualizar'>Complemento</i></label>
+                            <input name="complemento" type="text" class="form-control input-atualizar" id="complemento" value=" <%=resposta[0].pessoas.complemento%>">
+
+                            <label for=""> <i class='fas fa-map-signs pai-select-atualizar'>CEP</i></label>
+                            <input name="cep" type="text" class="form-control input-atualizar" id="cep" value=" <%=resposta[0].pessoas.cep%>">
+                            <label for=""> <i class='fas fa-map pai-select-atualizar'>Cidade</i></label>
+
+                            <input name="cidade" type="text" class="form-control input-atualizar" id="cidade" value=" <%=resposta[0].pessoas.cidade%>">
                             <label for=""> <i class='fas fa-map pai-select-atualizar'>UF</i></label>
-                            <input name="uf" type="text"
-                                class="form-control input-atualizar numero" id="uf"
-                                value=" <%=resposta[0].pessoas.uf%>">
+                            <input name="uf" type="text" class="form-control input-atualizar numero" id="uf" value=" <%=resposta[0].pessoas.uf%>">
+                        </div>
                     </div>
+                    <div class="group-button botoes-atualizar">
+                        <a href="/system/visualizar-usuario/<%=resposta[0].id%>"> <button type="button" id="fechar-modal" class="btn btn-secondary" data-dismiss="modal">Fechar</button></a>
+                        <button class="btn btn-info" type="submit">Atualizar</button>
+                    </div>
+                    </form>
                 </div>
-                <div class="group-button botoes-atualizar">
-                    <a href="/system/visualizar-usuario/<%=resposta[0].id%>"> <button type="button" id="fechar-modal" class="btn btn-secondary"
-                        data-dismiss="modal">Fechar</button></a>
-                    <button class="btn btn-info" type="submit">Atualizar</button>
-                </div>
-            </form>  
-            </div>
-    </div>
-    </div>
-    </article>
-    </div>
-</main>
-<!-- modal excuir usuário -->
-<div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><i class='far fa-trash-alt'> </i> Excluir Usuário
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </div>
+        </div>
+        </article>
+        </div>
+    </main>
+    <!-- modal excuir usuário -->
+    <div class="modal fade" id="modal-excluir-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class='far fa-trash-alt'> </i> Excluir Usuário
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                    <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <div class="modal-body">
-                <form class="form-peq-grupo" method="post" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=DELETE"
-                    enctype="multipart/form-data" novalidate>
-                    <div class="form-row">
-                       
-                        <h3 class="col-sm-12">Tem certeza que deseja Excluir?</h3>
-                        
-                        <p class="col-sm-12"><h5>Id: <%=resposta[0].id%></h5></p>
-                        <p class="col-sm-12"><h5>Nome: <%=resposta[0].pessoas.nome%></h5></p>
-                       
-                    <div class="group-button col-sm-12">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button class="btn btn-info" type="submit"><i class="far fa-trash-alt"> Excluir</i></button>
-                    </div>
-                </form>
+                </div>
+                <div class="modal-body">
+                    <form class="form-peq-grupo" method="post" action="/system/cadastro-usuario/<%=resposta[0].id%>?_method=DELETE" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
 
+                            <h3 class="col-sm-12">Tem certeza que deseja Excluir?</h3>
+
+                            <p class="col-sm-12">
+                                <h5>Id:
+                                    <%=resposta[0].id%>
+                                </h5>
+                            </p>
+                            <p class="col-sm-12">
+                                <h5>Nome:
+                                    <%=resposta[0].pessoas.nome%>
+                                </h5>
+                            </p>
+
+                            <div class="group-button col-sm-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button class="btn btn-info" type="submit"><i class="far fa-trash-alt"> Excluir</i></button>
+                            </div>
+                    </form>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<%-include('../partials/footer-system.ejs')%>
+        <%-include('../partials/footer-system.ejs')%>
 
 
-<script>
-      const image = document.getElementById('edit-image-usuario');
-      const i = document.getElementById('camera');
-      const cep = document.getElementById('cep');
-    const logradouro = document.getElementById('logradouro');
-    const bairro = document.getElementById('bairro');
-    const cidade = document.getElementById('cidade');
-    const uf = document.getElementById('uf');
-    const numero = document.getElementById('numero');
-    async function buscarCep(cep) {
-        const apiCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const resposta = await apiCep.json();
-        return resposta
-    }
-   
-    cep.addEventListener('change', async (e) => {
-        const resposta = await buscarCep(cep.value)
-        cep.value = resposta.cep
-        logradouro.value = resposta.logradouro
-        bairro.value = resposta.bairro
-        cidade.value = resposta.localidade
-        uf.value = resposta.uf
-        numero.focus()
-    })
+            <script>
+                const image = document.getElementById('edit-image-usuario');
+                const i = document.getElementById('camera');
+                const cep = document.getElementById('cep');
+                const logradouro = document.getElementById('logradouro');
+                const bairro = document.getElementById('bairro');
+                const cidade = document.getElementById('cidade');
+                const uf = document.getElementById('uf');
+                const numero = document.getElementById('numero');
+                async function buscarCep(cep) {
+                    const apiCep = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    const resposta = await apiCep.json();
+                    return resposta
+                }
 
-image.addEventListener("change",(e)=>{
-    i.className = "fas fa-thumbs-up"
-},false)
+                cep.addEventListener('change', async(e) => {
+                    const resposta = await buscarCep(cep.value)
+                    cep.value = resposta.cep
+                    logradouro.value = resposta.logradouro
+                    bairro.value = resposta.bairro
+                    cidade.value = resposta.localidade
+                    uf.value = resposta.uf
+                    numero.focus()
+                })
+
+                image.addEventListener("change", (e) => {
+                    i.className = "fas fa-thumbs-up"
+                }, false)
 
 
-'<% if(msgAtu){%>'
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-top-center",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-    toastr.success(`Usuário Atualizado com sucesso!`, toastr.options)
-    '<%}%>'
-  
-</script>
+                '<% if(msgAtu){%>'
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr.success(`Usuário Atualizado com sucesso!`, toastr.options)
+                '<%}%>'
+            </script>
